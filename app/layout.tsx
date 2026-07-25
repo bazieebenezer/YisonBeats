@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   title: "YIsonBits | Boutique Musicale & Services",
   description: "Boutique de beats, loops, samples et services musicaux par YIsonBits.",
   icons: {
-    icon: "/images/logoipsum-419.png",
+    icon: "/images/logoipsum-custom-logo.svg",
   },
 }
 
