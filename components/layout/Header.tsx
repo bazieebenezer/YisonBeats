@@ -2,9 +2,9 @@
 
 import * as React from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { usePathname, useRouter } from "next/navigation"
 import { 
-  Music, 
   ShoppingCart, 
   Search, 
   User, 
@@ -44,12 +44,7 @@ export function Header() {
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center gap-8">
           <Link href="/" className="flex items-center gap-2">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-              <Music className="h-5 w-5" />
-            </div>
-            <span className="font-display text-xl font-bold tracking-tight">
-              Yi<span className="text-primary">sonBits</span>
-            </span>
+            <Image src="/images/logoipsum-419.png" alt="YisonBits" width={32} height={32} className="rounded-lg" />
           </Link>
 
           <nav className="hidden md:flex items-center gap-6">

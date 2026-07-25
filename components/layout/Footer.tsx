@@ -1,5 +1,6 @@
 import Link from "next/link"
-import { Music, Facebook, Instagram, Twitter, Youtube, Mail } from "lucide-react"
+import Image from "next/image"
+import { Facebook, Instagram, Twitter, Youtube, Mail } from "lucide-react"
 
 export function Footer() {
   return (
@@ -8,12 +9,7 @@ export function Footer() {
         <div className="grid grid-cols-1 gap-12 md:grid-cols-4">
           <div className="space-y-4">
             <Link href="/" className="flex items-center gap-2">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-                <Music className="h-5 w-5" />
-              </div>
-              <span className="font-display text-xl font-bold tracking-tight text-white">
-                YI<span className="text-primary">sonBits</span>
-              </span>
+              <Image src="/images/logoipsum-419.png" alt="YisonBits" width={32} height={32} className="rounded-lg" />
             </Link>
             <p className="text-sm text-navy-foreground/70 max-w-xs">
               Votre destination premium pour des beats, instrumentales et services musicaux de haute qualité.
