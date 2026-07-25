@@ -67,7 +67,7 @@ export function GlobalPlayer() {
 
   return (
     <div className="fixed z-[100] select-none" style={{ left: pos.x, bottom: pos.y }}>
-      <div className="w-[270px] rounded-2xl overflow-hidden border border-white/10 bg-black/40 backdrop-blur-2xl">
+      <div className="relative w-[270px] rounded-2xl overflow-hidden border border-white/10 bg-black/40 backdrop-blur-2xl">
         {/* Background image layer */}
         <div className="absolute inset-0 -z-20">
           <Image
