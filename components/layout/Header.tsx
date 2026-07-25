@@ -45,6 +45,7 @@ export function Header() {
         <div className="flex items-center gap-8">
           <Link href="/" className="flex items-center gap-2">
             <Image src="/images/logoipsum-419.png" alt="YisonBits" width={32} height={32} className="rounded-lg" />
+            <span className="font-display text-xl font-bold tracking-tight">YisonBeats</span>
           </Link>
 
           <nav className="hidden md:flex items-center gap-6">

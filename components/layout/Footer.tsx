@@ -10,6 +10,7 @@ export function Footer() {
           <div className="space-y-4">
             <Link href="/" className="flex items-center gap-2">
               <Image src="/images/logoipsum-419.png" alt="YisonBits" width={32} height={32} className="rounded-lg" />
+            <span className="font-display text-xl font-bold tracking-tight text-white">YisonBeats</span>
             </Link>
             <p className="text-sm text-navy-foreground/70 max-w-xs">
               Votre destination premium pour des beats, instrumentales et services musicaux de haute qualité.
