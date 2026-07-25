@@ -8,6 +8,7 @@ interface AudioContextType {
   isPlaying: boolean
   playTrack: (track: Product) => void
   togglePlay: () => void
+  stop: () => void
   progress: number
   duration: number
   volume: number
@@ -66,6 +67,17 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
     }
   }
 
+  const stop = () => {
+    if (audioRef.current) {
+      audioRef.current.pause()
+      audioRef.current.currentTime = 0
+    }
+    setIsPlaying(false)
+    setCurrentTrack(null)
+    setProgress(0)
+    setDuration(0)
+  }
+
   const togglePlay = () => {
     if (audioRef.current && currentTrack) {
       if (isPlaying) {
@@ -90,6 +102,7 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
       isPlaying,
       playTrack,
       togglePlay,
+      stop,
       progress,
       duration,
       volume,
