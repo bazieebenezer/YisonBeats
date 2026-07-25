@@ -27,6 +27,7 @@ export const metadata: Metadata = {
 import { AudioProvider } from "@/hooks/use-audio"
 import { CartProvider } from "@/hooks/use-cart"
 import { GlobalPlayer } from "@/components/player/GlobalPlayer"
+import { ErrorBoundary } from "@/components/ErrorBoundary"
 
 export default function RootLayout({
   children,
@@ -47,7 +48,7 @@ export default function RootLayout({
               <main className="flex-1">{children}</main>
               <Footer />
             </div>
-            <GlobalPlayer />
+            <ErrorBoundary><GlobalPlayer /></ErrorBoundary>
           </CartProvider>
         </AudioProvider>
       </body>
