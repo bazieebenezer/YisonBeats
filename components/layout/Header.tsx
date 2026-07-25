@@ -80,7 +80,7 @@ export function Header() {
             <Link href="/cart">
               <ShoppingCart className="h-5 w-5" />
               {totalCount > 0 && (
-                <span className="absolute -right-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-white">
+                <span className="absolute -right-1.5 -top-1.5 flex h-5 w-5 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-white">
                   {totalCount}
                 </span>
               )}
@@ -106,7 +106,7 @@ export function Header() {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden border-t bg-background p-4 animate-in slide-in-from-top duration-300">
+        <div className="md:hidden border-t bg-background p-4 animate-in slide-in-from-top duration-300 max-h-[calc(100vh-4rem)] overflow-y-auto">
           <nav className="flex flex-col gap-4">
             {navigation.map((item) => (
               <Link

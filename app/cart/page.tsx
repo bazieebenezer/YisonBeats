@@ -37,22 +37,22 @@ export default function CartPage() {
         {/* Items List */}
         <div className="lg:col-span-8 space-y-6">
           {items.map((item) => (
-            <div key={item.id} className="flex items-center gap-6 p-4 rounded-2xl border bg-white">
-              <div className="relative h-24 w-24 rounded-xl overflow-hidden shrink-0 border">
+            <div key={item.id} className="flex flex-col sm:flex-row items-start sm:items-center gap-4 p-4 rounded-2xl border bg-white">
+              <div className="relative h-20 w-20 md:h-24 md:w-24 rounded-xl overflow-hidden shrink-0 border">
                 <Image src={item.coverImage} alt={item.name} fill className="object-cover" />
               </div>
               
-              <div className="flex-1 min-w-0">
-                <div className="flex items-start justify-between">
-                  <div>
-                    <h3 className="font-bold text-lg truncate">{item.name}</h3>
+              <div className="flex-1 min-w-0 w-full">
+                <div className="flex items-start justify-between gap-2">
+                  <div className="min-w-0">
+                    <h3 className="font-bold text-base md:text-lg truncate">{item.name}</h3>
                     <p className="text-sm text-muted-foreground">{item.type} • {item.style}</p>
                   </div>
-                  <p className="font-extrabold text-primary">{formatPrice(item.price)}</p>
+                  <p className="font-extrabold text-primary whitespace-nowrap">{formatPrice(item.price)}</p>
                 </div>
                 
-                <div className="mt-4 flex items-center justify-between">
-                  <div className="flex gap-4 text-xs font-medium text-muted-foreground">
+                <div className="mt-3 flex items-center justify-between">
+                  <div className="flex flex-col sm:flex-row gap-1 sm:gap-4 text-xs font-medium text-muted-foreground">
                     <span>{item.format}</span>
                     <span>Licence commerciale</span>
                   </div>

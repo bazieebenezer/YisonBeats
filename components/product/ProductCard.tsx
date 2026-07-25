@@ -75,12 +75,12 @@ export function ProductCard({ product }: ProductCardProps) {
           </div>
           
           <div className="flex gap-1">
-            <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full" asChild>
+            <Button variant="ghost" size="icon" className="h-10 w-10 rounded-full" asChild>
               <Link href={`/product/${product.slug}`}>
-                <Eye className="h-6 w-6" />
+                <Eye className="h-5 w-5" />
               </Link>
             </Button>
-            
+
             {product.isFree ? (
               <Button
                 variant="outline"
@@ -89,18 +89,18 @@ export function ProductCard({ product }: ProductCardProps) {
                 asChild
               >
                 <a href={product.downloadUrl} download>
-                  <Download className="h-6 w-6" />
+                  <Download className="h-5 w-5" />
                 </a>
               </Button>
             ) : (
               <Button
                 variant={isInCart ? "default" : "outline"}
                 size="icon"
-                className="h-8 w-8 rounded-full"
+                className="h-10 w-10 rounded-full"
                 onClick={() => addItem(product)}
                 disabled={isInCart}
               >
-                <ShoppingCart className="h-6 w-6" />
+                <ShoppingCart className="h-5 w-5" />
               </Button>
             )}
           </div>
