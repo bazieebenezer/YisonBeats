@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-import Image from "next/image"
 import {
   Play,
   Pause,
@@ -46,8 +45,8 @@ export function GlobalPlayer() {
     if (!dragging) return
 
     const handlePointerMove = (e: PointerEvent) => {
-      const maxX = typeof window !== "undefined" ? window.innerWidth - 300 : 0
-      const maxY = typeof window !== "undefined" ? window.innerHeight - 200 : 0
+      const maxX = window.innerWidth - 300
+      const maxY = window.innerHeight - 200
       setPos({
         x: Math.max(0, Math.min(maxX, dragRef.current.elX + e.clientX - dragRef.current.startX)),
         y: Math.max(0, Math.min(maxY, dragRef.current.elY + e.clientY - dragRef.current.startY))
@@ -67,22 +66,18 @@ export function GlobalPlayer() {
 
   return (
     <div className="fixed z-[100] select-none" style={{ left: pos.x, bottom: pos.y }}>
-      <div className="relative w-[270px] rounded-2xl overflow-hidden border border-white/10 bg-black/40 backdrop-blur-2xl">
-        {/* Background image layer */}
-        <div className="absolute inset-0 -z-20">
-          <Image
-            src={currentTrack.coverImage}
-            alt=""
-            fill
-            className="object-cover"
-            sizes="270px"
-          />
-        </div>
+      <div className="relative w-[270px] rounded-2xl overflow-hidden border border-white/10">
+        {/* Background image */}
+        <img
+          src={currentTrack.coverImage}
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover"
+        />
         {/* Gradient overlays */}
-        <div className="absolute inset-0 -z-10 bg-gradient-to-t from-black/90 via-black/60 to-black/40" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/40" />
 
         {/* Drag handle + Close */}
-        <div className="flex items-center justify-between px-3 pt-3 relative">
+        <div className="relative flex items-center justify-between px-3 pt-3">
           <button
             onPointerDown={handlePointerDown}
             className="cursor-grab active:cursor-grabbing text-white/40 hover:text-white/70 transition-colors p-1 -ml-1"
@@ -100,7 +95,7 @@ export function GlobalPlayer() {
         </div>
 
         {/* Content */}
-        <div className="px-4 pb-4 pt-8 relative">
+        <div className="relative px-4 pb-4 pt-8">
           <div className="flex items-center gap-3 mb-3">
             <button
               onClick={togglePlay}
