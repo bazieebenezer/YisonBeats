@@ -26,13 +26,25 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
   const [volume, setVolume] = React.useState(0.8)
   
   const audioRef = React.useRef<HTMLAudioElement | null>(null)
+  const progressRef = React.useRef(0)
 
   React.useEffect(() => {
     audioRef.current = new Audio()
     
     const audio = audioRef.current
-    
-    const updateProgress = () => setProgress(audio.currentTime)
+    let rafId: number | null = null
+
+    const updateProgress = () => {
+      if (audio) {
+        progressRef.current = audio.currentTime
+        if (rafId === null) {
+          rafId = requestAnimationFrame(() => {
+            setProgress(progressRef.current)
+            rafId = null
+          })
+        }
+      }
+    }
     const updateDuration = () => setDuration(audio.duration)
     const onEnded = () => setIsPlaying(false)
 
@@ -41,6 +53,7 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
     audio.addEventListener('ended', onEnded)
 
     return () => {
+      if (rafId !== null) cancelAnimationFrame(rafId)
       audio.removeEventListener('timeupdate', updateProgress)
       audio.removeEventListener('loadedmetadata', updateDuration)
       audio.removeEventListener('ended', onEnded)
@@ -54,35 +67,7 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
     }
   }, [volume])
 
-  const playTrack = async (track: Product) => {
-    if (currentTrack?.id === track.id) {
-      togglePlay()
-    } else {
-      setCurrentTrack(track)
-      if (audioRef.current) {
-        audioRef.current.src = track.previewUrl
-        try {
-          await audioRef.current.play()
-          setIsPlaying(true)
-        } catch {
-          setIsPlaying(false)
-        }
-      }
-    }
-  }
-
-  const stop = () => {
-    if (audioRef.current) {
-      audioRef.current.pause()
-      audioRef.current.currentTime = 0
-    }
-    setIsPlaying(false)
-    setCurrentTrack(null)
-    setProgress(0)
-    setDuration(0)
-  }
-
-  const togglePlay = () => {
+  const togglePlay = React.useCallback(() => {
     if (audioRef.current && currentTrack) {
       if (isPlaying) {
         audioRef.current.pause()
@@ -91,28 +76,60 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
         audioRef.current.play().then(() => setIsPlaying(true)).catch(() => setIsPlaying(false))
       }
     }
-  }
+  }, [currentTrack, isPlaying])
 
-  const seek = (time: number) => {
+  const playTrack = React.useCallback(async (track: Product) => {
+    if (audioRef.current && currentTrack?.id === track.id) {
+      togglePlay()
+    } else {
+      if (audioRef.current) {
+        audioRef.current.src = track.previewUrl
+      }
+      setCurrentTrack(track)
+      if (audioRef.current) {
+        try {
+          await audioRef.current.play()
+          setIsPlaying(true)
+        } catch {
+          setIsPlaying(false)
+        }
+      }
+    }
+  }, [currentTrack, isPlaying, togglePlay])
+
+  const stop = React.useCallback(() => {
+    if (audioRef.current) {
+      audioRef.current.pause()
+      audioRef.current.currentTime = 0
+    }
+    setIsPlaying(false)
+    setCurrentTrack(null)
+    setProgress(0)
+    setDuration(0)
+  }, [])
+
+  const seek = React.useCallback((time: number) => {
     if (audioRef.current) {
       audioRef.current.currentTime = time
       setProgress(time)
     }
-  }
+  }, [])
+
+  const value = React.useMemo(() => ({
+    currentTrack,
+    isPlaying,
+    playTrack,
+    togglePlay,
+    stop,
+    progress,
+    duration,
+    volume,
+    setVolume,
+    seek
+  }), [currentTrack, isPlaying, playTrack, togglePlay, stop, progress, duration, volume, setVolume, seek])
 
   return (
-    <AudioContext.Provider value={{
-      currentTrack,
-      isPlaying,
-      playTrack,
-      togglePlay,
-      stop,
-      progress,
-      duration,
-      volume,
-      setVolume,
-      seek
-    }}>
+    <AudioContext.Provider value={value}>
       {children}
     </AudioContext.Provider>
   )

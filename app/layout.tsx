@@ -41,16 +41,18 @@ export default function RootLayout({
         inter.variable,
         poppins.variable
       )}>
-        <AudioProvider>
-          <CartProvider>
-            <div className="relative flex min-h-screen flex-col">
-              <Header />
-              <main className="flex-1">{children}</main>
-              <Footer />
-            </div>
-            <ErrorBoundary><GlobalPlayer /></ErrorBoundary>
-          </CartProvider>
-        </AudioProvider>
+        <ErrorBoundary>
+          <AudioProvider>
+            <CartProvider>
+              <div className="relative flex min-h-screen flex-col">
+                <Header />
+                <main className="flex-1">{children}</main>
+                <Footer />
+              </div>
+              <GlobalPlayer />
+            </CartProvider>
+          </AudioProvider>
+        </ErrorBoundary>
       </body>
     </html>
   )
