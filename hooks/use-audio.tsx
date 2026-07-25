@@ -84,18 +84,17 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
     } else {
       if (audioRef.current) {
         audioRef.current.src = track.previewUrl
-      }
-      setCurrentTrack(track)
-      if (audioRef.current) {
+        setCurrentTrack(track)
         try {
           await audioRef.current.play()
           setIsPlaying(true)
-        } catch {
+        } catch (error) {
+          console.error("Playback failed:", error)
           setIsPlaying(false)
         }
       }
     }
-  }, [currentTrack, isPlaying, togglePlay])
+  }, [currentTrack, togglePlay])
 
   const stop = React.useCallback(() => {
     if (audioRef.current) {
