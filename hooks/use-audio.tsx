@@ -54,15 +54,19 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
     }
   }, [volume])
 
-  const playTrack = (track: Product) => {
+  const playTrack = async (track: Product) => {
     if (currentTrack?.id === track.id) {
       togglePlay()
     } else {
       setCurrentTrack(track)
       if (audioRef.current) {
         audioRef.current.src = track.previewUrl
-        audioRef.current.play()
-        setIsPlaying(true)
+        try {
+          await audioRef.current.play()
+          setIsPlaying(true)
+        } catch {
+          setIsPlaying(false)
+        }
       }
     }
   }
@@ -82,10 +86,10 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
     if (audioRef.current && currentTrack) {
       if (isPlaying) {
         audioRef.current.pause()
+        setIsPlaying(false)
       } else {
-        audioRef.current.play()
+        audioRef.current.play().then(() => setIsPlaying(true)).catch(() => setIsPlaying(false))
       }
-      setIsPlaying(!isPlaying)
     }
   }
 
