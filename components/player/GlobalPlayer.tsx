@@ -52,34 +52,34 @@ export function GlobalPlayer() {
               />
             </div>
             <div className="min-w-0">
-              <p className="text-sm font-bold truncate text-white">{currentTrack.name}</p>
-              <p className="text-xs text-white/50 truncate">{currentTrack.style}</p>
+              <p className="text-sm font-bold truncate text-foreground">{currentTrack.name}</p>
+              <p className="text-xs text-muted-foreground truncate">{currentTrack.style}</p>
             </div>
           </div>
 
           {/* Controls Section */}
           <div className="flex-1 flex flex-col items-center gap-2 w-full">
             <div className="flex items-center gap-6">
-              <Button variant="ghost" size="icon" className="h-8 w-8 text-white/70 hover:text-white">
+              <Button variant="ghost" size="icon" className="h-8 w-8 text-foreground/70 hover:text-foreground">
                 <SkipBack className="h-4 w-4 fill-current" />
               </Button>
               <Button 
                 onClick={togglePlay}
                 size="icon" 
-                className="h-10 w-10 rounded-full bg-white text-navy hover:bg-white/90 "
+                className="h-10 w-10 rounded-full bg-primary text-primary-foreground hover:bg-primary/90"
               >
                 {isPlaying ? <Pause className="h-5 w-5 fill-current" /> : <Play className="h-5 w-5 fill-current ml-0.5" />}
               </Button>
-              <Button variant="ghost" size="icon" className="h-8 w-8 text-white/70 hover:text-white">
+              <Button variant="ghost" size="icon" className="h-8 w-8 text-foreground/70 hover:text-foreground">
                 <SkipForward className="h-4 w-4 fill-current" />
               </Button>
             </div>
             
             <div className="flex items-center gap-3 w-full max-w-lg">
-              <span className="text-[10px] font-medium text-white/50 w-8 text-right">
+              <span className="text-[10px] font-medium text-muted-foreground w-8 text-right">
                 {formatTime(progress)}
               </span>
-              <div className="relative flex-1 h-1 bg-white/10 rounded-full overflow-hidden cursor-pointer group">
+              <div className="relative flex-1 h-1 bg-foreground/10 rounded-full overflow-hidden cursor-pointer group">
                 <div 
                   className="absolute top-0 left-0 h-full bg-primary group-hover:bg-primary/80 transition-all"
                   style={{ width: `${(progress / duration) * 100}%` }}
@@ -93,7 +93,7 @@ export function GlobalPlayer() {
                   className="absolute inset-0 w-full opacity-0 cursor-pointer"
                 />
               </div>
-              <span className="text-[10px] font-medium text-white/50 w-8">
+              <span className="text-[10px] font-medium text-muted-foreground w-8">
                 {formatTime(duration)}
               </span>
             </div>
@@ -101,12 +101,12 @@ export function GlobalPlayer() {
 
           {/* Volume Section */}
           <div className="hidden md:flex items-center justify-end gap-3 w-1/4">
-            <Button variant="ghost" size="icon" className="h-8 w-8 text-white/70 hover:text-white" onClick={() => setVolume(volume === 0 ? 0.8 : 0)}>
+            <Button variant="ghost" size="icon" className="h-8 w-8 text-foreground/70 hover:text-foreground" onClick={() => setVolume(volume === 0 ? 0.8 : 0)}>
               {volume === 0 ? <VolumeX className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
             </Button>
-            <div className="relative w-24 h-1 bg-white/10 rounded-full overflow-hidden group">
+            <div className="relative w-24 h-1 bg-foreground/10 rounded-full overflow-hidden group">
                <div 
-                  className="absolute top-0 left-0 h-full bg-white group-hover:bg-primary transition-all"
+                  className="absolute top-0 left-0 h-full bg-foreground/70 group-hover:bg-primary transition-all"
                   style={{ width: `${volume * 100}%` }}
                 />
                 <input 

@@ -21,10 +21,10 @@ export default function HomePage() {
 
         <div className="container relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8 text-center lg:text-left">
-            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-medium text-white">
+            {/*<div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-medium text-white">
               <span className="flex h-2 w-2 rounded-xl bg-primary animate-pulse" />
               Nouveaux beats disponibles
-            </div>
+            </div>*/}
             
             <h1 className="font-display text-5xl md:text-7xl font-extrabold text-white leading-[1.1]">
               Des sons qui <span className="text-primary">donnent vie</span> à vos idées.
