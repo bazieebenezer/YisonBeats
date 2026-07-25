@@ -40,7 +40,6 @@ export function Footer() {
             <h3 className="font-display font-bold text-white mb-6">Services</h3>
             <ul className="space-y-4 text-sm text-navy-foreground/70">
               <li><Link href="/services#custom" className="hover:text-primary">Beats sur mesure</Link></li>
-              <li><Link href="/services#mixing" className="hover:text-primary">Mixage & Master</Link></li>
               <li><Link href="/services#composition" className="hover:text-primary">Composition</Link></li>
               <li><Link href="/services#piano" className="hover:text-primary">Piano Session</Link></li>
             </ul>
@@ -65,7 +64,7 @@ export function Footer() {
         </div>
 
         <div className="border-t border-white/5 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-navy-foreground/50">
-          <p>© 2026 YIsonBits. Tous droits réservés.</p>
+          <p>© 2026 YisonBits. Tous droits réservés.</p>
           <div className="flex gap-6">
             <Link href="/privacy" className="hover:text-white">Confidentialité</Link>
             <Link href="/terms" className="hover:text-white">Conditions de vente</Link>

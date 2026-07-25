@@ -8,7 +8,7 @@ export default function ProfilePage() {
   return (
     <div className="space-y-8 animate-in fade-in duration-500">
       <div className="space-y-2">
-        <h2 className="text-2xl font-extrabold tracking-tight">Mon Profil</h2>
+        <h2 className="text-2xl font-extrabold tracking-tight">Mon profil</h2>
         <p className="text-muted-foreground">Gérez vos informations personnelles.</p>
       </div>
 

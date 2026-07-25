@@ -31,7 +31,7 @@ export default function CartPage() {
 
   return (
     <div className="container py-12">
-      <h1 className="text-4xl font-extrabold tracking-tight mb-12">Mon Panier ({totalCount})</h1>
+      <h1 className="text-4xl font-extrabold tracking-tight mb-12">Mon panier ({totalCount})</h1>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
         {/* Items List */}
@@ -54,7 +54,7 @@ export default function CartPage() {
                 <div className="mt-4 flex items-center justify-between">
                   <div className="flex gap-4 text-xs font-medium text-muted-foreground">
                     <span>{item.format}</span>
-                    <span>Licence Commerciale</span>
+                    <span>Licence commerciale</span>
                   </div>
                   <Button 
                     variant="ghost" 
@@ -107,7 +107,7 @@ export default function CartPage() {
           </Card>
 
           <div className="p-6 rounded-2xl bg-primary/5 border border-primary/10">
-            <p className="text-sm font-medium text-primary mb-2">Code Promo ?</p>
+            <p className="text-sm font-medium text-primary mb-2">Code promo ?</p>
             <div className="flex gap-2">
               <input 
                 type="text" 

@@ -13,7 +13,7 @@ export default function ServicesPage() {
         </div>
         
         <div className="container relative z-10 space-y-6 text-center">
-          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight">Mes Services Musicaux</h1>
+          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight">Mes services musicaux</h1>
           <p className="text-xl text-white/60 max-w-3xl mx-auto">
             De la création de beats au mixage final, je vous accompagne dans toutes les étapes de votre production musicale.
           </p>

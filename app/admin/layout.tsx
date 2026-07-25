@@ -39,7 +39,7 @@ export default function AdminLayout({
         <div className="p-6 border-b">
           <Link href="/" className="flex items-center gap-2">
             <span className="font-display text-xl font-bold tracking-tight">
-              YI<span className="text-primary">sonBits</span>
+              Yi<span className="text-primary">sonBits</span>
             </span>
             <span className="text-[10px] bg-slate-100 px-1.5 py-0.5 rounded font-bold uppercase tracking-widest">Admin</span>
           </Link>
@@ -89,7 +89,7 @@ export default function AdminLayout({
 
           <div className="flex items-center gap-4">
             <Button size="sm" className="gap-2">
-              <Plus className="h-4 w-4" /> Nouveau Produit
+              <Plus className="h-4 w-4" /> Nouveau produit
             </Button>
             <div className="h-8 w-8 rounded-full bg-primary flex items-center justify-center text-white text-xs font-bold">
               JB

@@ -45,7 +45,7 @@ export default function AdminDashboard() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <Card className="lg:col-span-2 border-none rounded-2xl overflow-hidden">
           <div className="p-6 border-b flex items-center justify-between bg-white">
-            <h3 className="font-bold">Commandes Récentes</h3>
+            <h3 className="font-bold">Commandes récentes</h3>
             <button className="text-xs font-bold text-primary hover:underline">Voir tout</button>
           </div>
           <CardContent className="p-0 bg-white">
@@ -89,7 +89,7 @@ export default function AdminDashboard() {
 
         <Card className="border-none rounded-2xl overflow-hidden bg-white">
           <div className="p-6 border-b">
-            <h3 className="font-bold">Produits Populaires</h3>
+            <h3 className="font-bold">Produits populaires</h3>
           </div>
           <CardContent className="p-6 space-y-6">
             {[

@@ -10,7 +10,7 @@ export default function DownloadsPage() {
   return (
     <div className="space-y-8 animate-in fade-in duration-500">
       <div className="space-y-2">
-        <h2 className="text-2xl font-extrabold tracking-tight">Mes Téléchargements</h2>
+        <h2 className="text-2xl font-extrabold tracking-tight">Mes téléchargements</h2>
         <p className="text-muted-foreground">Retrouvez ici tous les produits que vous avez achetés ou téléchargés gratuitement.</p>
       </div>
 

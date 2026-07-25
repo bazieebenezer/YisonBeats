@@ -22,7 +22,7 @@ export default function HomePage() {
         <div className="container relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8 text-center lg:text-left">
             <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-medium text-white">
-              <span className="flex h-2 w-2 rounded-full bg-primary animate-pulse" />
+              <span className="flex h-2 w-2 rounded-xl bg-primary animate-pulse" />
               Nouveaux beats disponibles
             </div>
             
@@ -38,7 +38,7 @@ export default function HomePage() {
               <Button size="lg" className="h-14 px-8 text-base font-bold" asChild>
                 <Link href="/shop">Explorer la boutique</Link>
               </Button>
-              <Button size="lg" variant="outline" className="h-14 px-8 text-base font-bold border-white/10 text-white hover:bg-white/5" asChild>
+              <Button size="lg" variant="outline" className="h-14 px-8 text-base font-bold border-white/10 text-black hover:bg-white/5 hover:text-white" asChild>
                 <Link href="/services">Mes services</Link>
               </Button>
             </div>
@@ -83,8 +83,8 @@ export default function HomePage() {
       <section className="container">
         <div className="flex items-end justify-between mb-12">
           <div className="space-y-2">
-            <p className="text-xs font-bold uppercase tracking-[0.3em] text-primary">Top Collection</p>
-            <h2 className="text-3xl md:text-4xl font-extrabold">Produits Populaires</h2>
+            <p className="text-xs font-bold uppercase tracking-[0.3em] text-primary">Top collection</p>
+            <h2 className="text-3xl md:text-4xl font-extrabold">Produits populaires</h2>
           </div>
           <Button variant="link" className="text-primary font-bold" asChild>
             <Link href="/shop" className="flex items-center gap-2">
@@ -104,7 +104,7 @@ export default function HomePage() {
       <section className="bg-slate-50 py-20 border-y">
         <div className="container">
           <div className="text-center space-y-4 mb-16">
-            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight">Explorez par Catégories</h2>
+            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight">Explorez par catégories</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Quel que soit votre besoin, nous avons les ressources musicales pour vous aider à créer votre prochain hit.
             </p>

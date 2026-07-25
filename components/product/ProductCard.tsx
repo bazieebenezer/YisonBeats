@@ -52,9 +52,9 @@ export function ProductCard({ product }: ProductCardProps) {
             onClick={() => playTrack(product)}
           >
             {isCurrentTrack && isPlaying ? (
-              <Pause className="h-6 w-6 fill-current" />
+              <Pause className="h-8 w-8 fill-current" />
             ) : (
-              <Play className="h-6 w-6 fill-current ml-0.5" />
+              <Play className="h-8 w-8 fill-current ml-0.5" />
             )}
           </Button>
         </div>
@@ -77,7 +77,7 @@ export function ProductCard({ product }: ProductCardProps) {
           <div className="flex gap-1">
             <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full" asChild>
               <Link href={`/product/${product.slug}`}>
-                <Eye className="h-4 w-4" />
+                <Eye className="h-6 w-6" />
               </Link>
             </Button>
             
@@ -85,11 +85,11 @@ export function ProductCard({ product }: ProductCardProps) {
               <Button
                 variant="outline"
                 size="icon"
-                className="h-8 w-8 rounded-full border-green-500 text-green-500 hover:bg-green-500 hover:text-white"
+                className="h-10 w-10 rounded-full border-green-500 text-green-500 hover:bg-green-500 hover:text-white"
                 asChild
               >
                 <a href={product.downloadUrl} download>
-                  <Download className="h-4 w-4" />
+                  <Download className="h-6 w-6" />
                 </a>
               </Button>
             ) : (
@@ -100,7 +100,7 @@ export function ProductCard({ product }: ProductCardProps) {
                 onClick={() => addItem(product)}
                 disabled={isInCart}
               >
-                <ShoppingCart className="h-4 w-4" />
+                <ShoppingCart className="h-6 w-6" />
               </Button>
             )}
           </div>

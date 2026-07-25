@@ -48,7 +48,7 @@ export function Header() {
               <Music className="h-5 w-5" />
             </div>
             <span className="font-display text-xl font-bold tracking-tight">
-              YI<span className="text-primary">sonBits</span>
+              Yi<span className="text-primary">sonBits</span>
             </span>
           </Link>
 

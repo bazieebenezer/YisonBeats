@@ -13,7 +13,7 @@ export default function OrdersPage() {
   return (
     <div className="space-y-8 animate-in fade-in duration-500">
       <div className="space-y-2">
-        <h2 className="text-2xl font-extrabold tracking-tight">Mes Commandes</h2>
+        <h2 className="text-2xl font-extrabold tracking-tight">Mes commandes</h2>
         <p className="text-muted-foreground">Retrouvez l&apos;historique de toutes vos commandes.</p>
       </div>
 

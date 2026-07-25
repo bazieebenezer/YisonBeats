@@ -29,7 +29,7 @@ export default function AboutPage() {
           </div>
           <div className="space-y-8">
             <div className="inline-flex items-center gap-2 rounded-full border bg-primary/5 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-widest">
-              <Music className="h-4 w-4" /> Mon Histoire
+              <Music className="h-4 w-4" /> Mon histoire
             </div>
             <h2 className="text-4xl md:text-5xl font-extrabold leading-tight">
               La Musique Est Mon <span className="text-primary">Langage</span>
@@ -54,7 +54,7 @@ export default function AboutPage() {
 
       <section className="container py-20 border-t">
         <div className="text-center space-y-4 mb-16">
-          <h2 className="text-3xl md:text-4xl font-extrabold">Pourquoi Choisir YIsonBits ?</h2>
+          <h2 className="text-3xl md:text-4xl font-extrabold">Pourquoi Choisir Yi-sonBeats ?</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             La qualité, l&apos;authenticité et la passion au service de votre musique.
           </p>
@@ -83,7 +83,7 @@ export default function AboutPage() {
         <div className="relative rounded-[2rem] bg-navy overflow-hidden px-8 py-20 text-center">
           <div className="relative z-10 max-w-3xl mx-auto space-y-8">
             <h2 className="font-display text-4xl font-extrabold text-white">
-              Prêt à Créer Ensemble ?
+              Prêt à créer ensemble ?
             </h2>
             <p className="text-lg text-white/60">
               Que vous ayez besoin d&apos;un beat personnalisé, d&apos;une composition originale ou d&apos;un accompagnement musical, je suis là pour vous.
