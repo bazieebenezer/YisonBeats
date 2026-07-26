@@ -103,20 +103,20 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
             </div>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4">
-              <div className="p-4 rounded-2xl bg-slate-50 border">
-                <p className="text-xs font-bold text-muted-foreground uppercase mb-1 black:bg-dark">BPM</p>
+              <div className="p-4 rounded-2xl bg-slate-50 dark:bg-gray-900 border">
+                <p className="text-xs font-bold text-muted-foreground uppercase mb-1">BPM</p>
                 <p className="text-xl font-bold">{product.bpm || "N/A"}</p>
               </div>
-              <div className="p-4 rounded-2xl bg-slate-50 border">
-                <p className="text-xs font-bold text-muted-foreground uppercase mb-1 black:bg-dark">Tonalité</p>
+              <div className="p-4 rounded-2xl bg-slate-50 dark:bg-gray-900 border">
+                <p className="text-xs font-bold text-muted-foreground uppercase mb-1">Tonalité</p>
                 <p className="text-xl font-bold">{product.key || "N/A"}</p>
               </div>
-              <div className="p-4 rounded-2xl bg-slate-50 border">
-                <p className="text-xs font-bold text-muted-foreground uppercase mb-1 black:bg-dark">Format</p>
+              <div className="p-4 rounded-2xl bg-slate-50 dark:bg-gray-900 border">
+                <p className="text-xs font-bold text-muted-foreground uppercase mb-1">Format</p>
                 <p className="text-xl font-bold">{product.format}</p>
               </div>
-              <div className="p-4 rounded-2xl bg-slate-50 border">
-                <p className="text-xs font-bold text-muted-foreground uppercase mb-1 black:bg-dark">Taille</p>
+              <div className="p-4 rounded-2xl bg-slate-50 dark:bg-gray-900 border">
+                <p className="text-xs font-bold text-muted-foreground uppercase mb-1">Taille</p>
                 <p className="text-xl font-bold">{product.size}</p>
               </div>
             </div>
@@ -134,7 +134,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
                   </p>
                 </div>
                 {product.isFree && (
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-green-100 text-green-600">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-300">
                     <Download className="h-6 w-6" />
                   </div>
                 )}
@@ -143,7 +143,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
               <div className="space-y-4">
                 <div className="space-y-2">
                   <p className="text-sm font-bold uppercase tracking-widest">Licence incluse</p>
-                  <div className="p-4 rounded-xl bg-slate-50 border flex items-start gap-3 dark:bg-dark">
+                  <div className="p-4 rounded-xl bg-slate-50 dark:bg-gray-900 border flex items-start gap-3">
                     <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
                     <div>
                       <p className="font-bold text-sm">{product.licence || "Standard License"}</p>
@@ -173,7 +173,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
                 {product.isFree ? (
                   <Button
                     size="lg"
-                    className="w-full h-14 text-base font-bold bg-green-500 hover:bg-green-600"
+                    className="w-full h-14 text-base font-bold bg-green-500 dark:bg-green-600 hover:bg-green-600 dark:hover:bg-green-700"
                     asChild
                   >
                     <a href={product.downloadUrl} download>Télécharger gratuitement</a>
