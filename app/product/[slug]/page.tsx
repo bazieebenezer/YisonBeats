@@ -73,7 +73,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
               </div>
               <Button
                 size="icon"
-                className="h-8 w-8 rounded-full bg-white text-primary hover:bg-white/90 "
+                className="h-10 w-10 p-2 rounded-full bg-white text-primary hover:bg-white/90 "
                 onClick={() => playTrack(product)}
               >
                 {isCurrentTrack && isPlaying ? (
@@ -104,19 +104,19 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4">
               <div className="p-4 rounded-2xl bg-slate-50 border">
-                <p className="text-xs font-bold text-muted-foreground uppercase mb-1">BPM</p>
+                <p className="text-xs font-bold text-muted-foreground uppercase mb-1 black:bg-dark">BPM</p>
                 <p className="text-xl font-bold">{product.bpm || "N/A"}</p>
               </div>
               <div className="p-4 rounded-2xl bg-slate-50 border">
-                <p className="text-xs font-bold text-muted-foreground uppercase mb-1">Tonalité</p>
+                <p className="text-xs font-bold text-muted-foreground uppercase mb-1 black:bg-dark">Tonalité</p>
                 <p className="text-xl font-bold">{product.key || "N/A"}</p>
               </div>
               <div className="p-4 rounded-2xl bg-slate-50 border">
-                <p className="text-xs font-bold text-muted-foreground uppercase mb-1">Format</p>
+                <p className="text-xs font-bold text-muted-foreground uppercase mb-1 black:bg-dark">Format</p>
                 <p className="text-xl font-bold">{product.format}</p>
               </div>
               <div className="p-4 rounded-2xl bg-slate-50 border">
-                <p className="text-xs font-bold text-muted-foreground uppercase mb-1">Taille</p>
+                <p className="text-xs font-bold text-muted-foreground uppercase mb-1 black:bg-dark">Taille</p>
                 <p className="text-xl font-bold">{product.size}</p>
               </div>
             </div>
@@ -143,7 +143,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
               <div className="space-y-4">
                 <div className="space-y-2">
                   <p className="text-sm font-bold uppercase tracking-widest">Licence incluse</p>
-                  <div className="p-4 rounded-xl bg-slate-50 border flex items-start gap-3">
+                  <div className="p-4 rounded-xl bg-slate-50 border flex items-start gap-3 dark:bg-dark">
                     <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
                     <div>
                       <p className="font-bold text-sm">{product.licence || "Standard License"}</p>
