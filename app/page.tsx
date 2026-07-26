@@ -38,7 +38,7 @@ export default function HomePage() {
               <Button size="lg" className="h-14 px-8 text-base font-bold" asChild>
                 <Link href="/shop">Explorer la boutique</Link>
               </Button>
-              <Button size="lg" variant="outline" className="h-14 px-8 text-base font-bold border-white/10 text-black hover:bg-white/5 hover:text-white" asChild>
+              <Button size="lg" variant="outline" className="h-14 px-8 text-base font-bold border-white/10 text-black hover:bg-white/5 dark:text-white hover:text-white" asChild>
                 <Link href="/services">Mes services</Link>
               </Button>
             </div>
