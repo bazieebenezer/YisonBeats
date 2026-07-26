@@ -34,7 +34,7 @@ export default function ShopContent() {
   return (
     <div className="container py-12 space-y-8">
       <div className="space-y-4">
-        <h1 className="text-4xl font-extrabold tracking-tight">La Boutique</h1>
+        <h1 className="text-4xl font-extrabold tracking-tight">La boutique</h1>
         <p className="text-muted-foreground">Parcourez notre catalogue complet de créations musicales.</p>
       </div>
 
