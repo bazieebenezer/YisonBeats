@@ -48,7 +48,7 @@ export default function ServicesPage() {
           
           <div className="w-full md:w-1/3 space-y-4">
             <div className="p-6 rounded-2xl bg-white dark:bg-gray-950 border flex items-center gap-4">
-              <div className="h-12 w-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
+              <div className="h-12 w-12 p-6 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
                 <Phone className="h-6 w-6" />
               </div>
               <div>
@@ -57,7 +57,7 @@ export default function ServicesPage() {
               </div>
             </div>
             <div className="p-6 rounded-2xl bg-white dark:bg-gray-950 border flex items-center gap-4">
-              <div className="h-12 w-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
+              <div className="h-12 w-12 p-6 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
                 <Mail className="h-6 w-6" />
               </div>
               <div>
