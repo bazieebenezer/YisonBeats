@@ -56,9 +56,9 @@ export default function ContactPage() {
               <div className="h-12 w-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
                 <MessageSquare className="h-6 w-6" />
               </div>
-              <div>
+              <div className="min-w-0">
                 <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest mb-1">WhatsApp</p>
-                <p className="font-bold text-lg">+226 00 00 00 00</p>
+                <p className="font-bold sm:text-lg">+226 00 00 00 00</p>
                 <p className="text-sm text-muted-foreground">Réponse sous 24h</p>
               </div>
             </div>
@@ -67,9 +67,9 @@ export default function ContactPage() {
               <div className="h-12 w-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
                 <Mail className="h-6 w-6" />
               </div>
-              <div>
+              <div className="min-w-0 break-words">
                 <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest mb-1">Email</p>
-                <p className="font-bold text-lg">contact@yisonbits.com</p>
+                <p className="font-bold sm:text-lg">contact@yisonbits.com</p>
                 <p className="text-sm text-muted-foreground">Réponse sous 48h</p>
               </div>
             </div>
@@ -78,7 +78,7 @@ export default function ContactPage() {
               <div className="h-12 w-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
                 <MapPin className="h-6 w-6" />
               </div>
-              <div>
+              <div className="min-w-0">
                 <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest mb-1">Localisation</p>
                 <p className="font-bold">Ouagadougou, Burkina Faso</p>
               </div>
@@ -88,7 +88,7 @@ export default function ContactPage() {
               <div className="h-12 w-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
                 <Clock className="h-6 w-6" />
               </div>
-              <div>
+              <div className="min-w-0">
                 <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest mb-1">Disponibilité</p>
                 <p className="font-bold">Lun - Ven : 9h - 18h</p>
                 <p className="text-sm text-muted-foreground">Week-end : Sur rendez-vous</p>

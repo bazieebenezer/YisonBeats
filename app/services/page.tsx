@@ -48,21 +48,21 @@ export default function ServicesPage() {
           
           <div className="w-full md:w-1/3 space-y-4">
             <div className="p-6 rounded-2xl bg-white dark:bg-gray-950 border flex items-center gap-4">
-              <div className="h-12 w-12 p-6 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
+              <div className="h-12 w-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
                 <Phone className="h-6 w-6" />
               </div>
-              <div>
+              <div className="min-w-0">
                 <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest">Téléphone</p>
-                <p className="font-bold">+226 00 00 00 00</p>
+                <p className="font-bold sm:text-lg">+226 00 00 00 00</p>
               </div>
             </div>
             <div className="p-6 rounded-2xl bg-white dark:bg-gray-950 border flex items-center gap-4">
-              <div className="h-12 w-12 p-6 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
+              <div className="h-12 w-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
                 <Mail className="h-6 w-6" />
               </div>
-              <div>
+              <div className="min-w-0 break-words">
                 <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest">Email</p>
-                <p className="font-bold">contact@yisonbits.com</p>
+                <p className="font-bold sm:text-lg">contact@yisonbits.com</p>
               </div>
             </div>
           </div>
