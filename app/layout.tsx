@@ -28,6 +28,7 @@ import { AudioProvider } from "@/hooks/use-audio"
 import { CartProvider } from "@/hooks/use-cart"
 import { GlobalPlayer } from "@/components/player/GlobalPlayer"
 import { ErrorBoundary } from "@/components/ErrorBoundary"
+import { ThemeProvider } from "@/hooks/use-theme"
 
 export default function RootLayout({
   children,
@@ -35,15 +36,16 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="fr" className="scroll-smooth">
+    <html lang="fr" className="scroll-smooth" suppressHydrationWarning>
       <body className={cn(
         "min-h-screen bg-background font-sans antialiased",
         inter.variable,
         poppins.variable
       )}>
-        <ErrorBoundary>
-          <AudioProvider>
-            <CartProvider>
+        <ThemeProvider>
+          <ErrorBoundary>
+            <AudioProvider>
+              <CartProvider>
               <div className="relative flex min-h-screen flex-col">
                 <Header />
                 <main className="flex-1">{children}</main>
@@ -52,7 +54,8 @@ export default function RootLayout({
               <GlobalPlayer />
             </CartProvider>
           </AudioProvider>
-        </ErrorBoundary>
+          </ErrorBoundary>
+        </ThemeProvider>
       </body>
     </html>
   )

@@ -9,11 +9,14 @@ import {
   Search, 
   User, 
   Menu, 
-  X 
+  X,
+  Sun,
+  Moon
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { useCart } from "@/hooks/use-cart"
+import { useTheme } from "@/hooks/use-theme"
 
 const navigation = [
   { name: "Accueil", href: "/" },
@@ -29,6 +32,7 @@ export function Header() {
   const pathname = usePathname()
   const router = useRouter()
   const { totalCount } = useCart()
+  const { theme, toggleTheme } = useTheme()
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault()
@@ -75,6 +79,10 @@ export function Header() {
               className="h-9 w-64 rounded-full border bg-muted/50 pl-10 pr-4 text-sm focus:outline-none focus:ring-1 focus:ring-primary"
             />
           </form>
+
+          <Button variant="ghost" size="icon" onClick={toggleTheme} className="text-muted-foreground hover:text-primary">
+            {theme === "light" ? <Moon className="h-5 w-5" /> : <Sun className="h-5 w-5" />}
+          </Button>
 
           <Button variant="ghost" size="icon" className="relative" asChild>
             <Link href="/cart">
