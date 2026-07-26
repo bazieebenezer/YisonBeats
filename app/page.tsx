@@ -115,7 +115,7 @@ export default function HomePage() {
               <Link 
                 key={cat.id} 
                 href={`/shop?type=${cat.name}`}
-                className="group flex flex-col items-center justify-center p-8 bg-white dark:bg-gray-950 rounded-2xl border border-border/50 hover:border-primary/50 transition-all duration-300"
+                className="group flex flex-col items-center justify-center p-8 bg-white dark:bg-gray-900 rounded-2xl border border-border/50 hover:border-primary/50 transition-all duration-300"
               >
                 <div className="mb-4 text-muted-foreground group-hover:text-primary transition-colors">
                   {/* We would render actual icons here */}
