@@ -73,7 +73,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
               </div>
               <Button
                 size="icon"
-                className="h-16 w-16 rounded-full bg-white text-primary hover:bg-white/90 "
+                className="h-8 w-8 rounded-full bg-white text-primary hover:bg-white/90 "
                 onClick={() => playTrack(product)}
               >
                 {isCurrentTrack && isPlaying ? (
