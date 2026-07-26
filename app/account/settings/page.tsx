@@ -12,7 +12,7 @@ export default function SettingsPage() {
         <p className="text-muted-foreground">Gérez vos préférences et la sécurité de votre compte.</p>
       </div>
 
-      <Card className="border-slate-100 rounded-2xl overflow-hidden">
+      <Card className="border-slate-100 dark:border-gray-800 rounded-2xl overflow-hidden">
         <CardContent className="p-8 space-y-8">
           <div className="space-y-6">
             <div className="flex items-center gap-3">
@@ -24,7 +24,7 @@ export default function SettingsPage() {
             <div className="space-y-4 ml-14">
               {["Nouveaux beats", "Offres promotionnelles", "Confirmations de commande", "Newsletter"].map((item) => (
                 <label key={item} className="flex items-center gap-3 cursor-pointer">
-                  <input type="checkbox" defaultChecked className="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary" />
+                  <input type="checkbox" defaultChecked className="h-4 w-4 rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary" />
                   <span className="text-sm font-medium">{item}</span>
                 </label>
               ))}

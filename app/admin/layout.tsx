@@ -33,15 +33,15 @@ export default function AdminLayout({
   ]
 
   return (
-    <div className="flex min-h-screen bg-slate-50">
+    <div className="flex min-h-screen bg-slate-50 dark:bg-gray-950">
       {/* Sidebar */}
-      <aside className="w-64 border-r bg-white hidden lg:flex flex-col sticky top-0 h-screen">
+      <aside className="w-64 border-r bg-white dark:bg-gray-950 hidden lg:flex flex-col sticky top-0 h-screen">
         <div className="p-6 border-b">
           <Link href="/" className="flex items-center gap-2">
             <span className="font-display text-xl font-bold tracking-tight">
               Yi<span className="text-primary">sonBits</span>
             </span>
-            <span className="text-[10px] bg-slate-100 px-1.5 py-0.5 rounded font-bold uppercase tracking-widest">Admin</span>
+            <span className="text-[10px] bg-slate-100 dark:bg-gray-800 px-1.5 py-0.5 rounded font-bold uppercase tracking-widest">Admin</span>
           </Link>
         </div>
 
@@ -56,7 +56,7 @@ export default function AdminLayout({
                   "flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-bold transition-all",
                   isActive 
                     ? "bg-navy text-white" 
-                    : "text-muted-foreground hover:bg-slate-100 hover:text-foreground"
+                    : "text-muted-foreground hover:bg-slate-100 dark:hover:bg-gray-800 hover:text-foreground"
                 )}
               >
                 <link.icon className="h-4 w-4" />
@@ -67,7 +67,7 @@ export default function AdminLayout({
         </nav>
 
         <div className="p-4 border-t">
-          <div className="p-4 rounded-xl bg-slate-50 border space-y-3">
+          <div className="p-4 rounded-xl bg-slate-50 dark:bg-gray-900 border space-y-3">
             <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Version</p>
             <p className="text-sm font-bold">YIsonBits v1.0.0</p>
           </div>
@@ -77,13 +77,13 @@ export default function AdminLayout({
       {/* Main Content */}
       <main className="flex-1 flex flex-col">
         {/* Top Header */}
-        <header className="h-16 border-b bg-white flex items-center justify-between px-8 sticky top-0 z-40">
+        <header className="h-16 border-b bg-white dark:bg-gray-950 flex items-center justify-between px-8 sticky top-0 z-40">
           <div className="relative w-96">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <input 
               type="text" 
               placeholder="Rechercher une commande, un produit..." 
-              className="h-9 w-full rounded-lg border-none bg-slate-100 pl-10 pr-4 text-xs focus:ring-1 focus:ring-primary"
+              className="h-9 w-full rounded-lg border-none bg-slate-100 dark:bg-gray-800 pl-10 pr-4 text-xs focus:ring-1 focus:ring-primary"
             />
           </div>
 

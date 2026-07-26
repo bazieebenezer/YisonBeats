@@ -21,7 +21,7 @@ export default function AdminServicesPage() {
         {services.map((service) => {
           const Icon = (Icons as any)[service.icon.charAt(0).toUpperCase() + service.icon.slice(1)] || Icons.Music
           return (
-            <Card key={service.id} className="border-slate-100 rounded-2xl overflow-hidden group">
+            <Card key={service.id} className="border-slate-100 dark:border-gray-800 rounded-2xl overflow-hidden group">
               <CardContent className="p-6 space-y-4">
                 <div className="flex items-start justify-between">
                   <div className="flex items-center gap-3">
@@ -37,7 +37,7 @@ export default function AdminServicesPage() {
                     <Button variant="ghost" size="icon" className="h-8 w-8">
                       <Edit2 className="h-4 w-4" />
                     </Button>
-                    <Button variant="ghost" size="icon" className="h-8 w-8 text-red-500">
+                    <Button variant="ghost" size="icon" className="h-8 w-8 text-red-500 dark:text-red-400">
                       <Trash2 className="h-4 w-4" />
                     </Button>
                   </div>

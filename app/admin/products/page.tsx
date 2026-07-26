@@ -19,13 +19,13 @@ export default function AdminProductsPage() {
       </div>
 
       <Card className="border-none rounded-2xl overflow-hidden">
-        <div className="p-6 border-b flex items-center justify-between bg-white">
+        <div className="p-6 border-b flex items-center justify-between bg-white dark:bg-gray-950">
           <div className="relative w-72">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <input 
               type="text" 
               placeholder="Filtrer les produits..." 
-              className="h-9 w-full rounded-lg border bg-slate-50 pl-10 pr-4 text-xs focus:ring-1 focus:ring-primary"
+              className="h-9 w-full rounded-lg border bg-slate-50 dark:bg-gray-900 pl-10 pr-4 text-xs focus:ring-1 focus:ring-primary"
             />
           </div>
           <div className="flex items-center gap-2">
@@ -34,11 +34,11 @@ export default function AdminProductsPage() {
           </div>
         </div>
         
-        <CardContent className="p-0 bg-white">
+        <CardContent className="p-0 bg-white dark:bg-gray-950">
           <div className="overflow-x-auto">
             <table className="w-full text-left">
               <thead>
-                <tr className="bg-slate-50 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
+                <tr className="bg-slate-50 dark:bg-gray-900 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
                   <th className="px-6 py-4">Produit</th>
                   <th className="px-6 py-4">Type / Style</th>
                   <th className="px-6 py-4">Prix</th>
@@ -47,9 +47,9 @@ export default function AdminProductsPage() {
                   <th className="px-6 py-4 text-right">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100">
+              <tbody className="divide-y divide-slate-100 dark:divide-gray-800">
                 {products.map((product) => (
-                  <tr key={product.id} className="hover:bg-slate-50 transition-colors text-sm group">
+                  <tr key={product.id} className="hover:bg-slate-50 dark:hover:bg-gray-800 transition-colors text-sm group">
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-3">
                         <div className="relative h-10 w-10 rounded-lg overflow-hidden shrink-0 border">
@@ -69,7 +69,7 @@ export default function AdminProductsPage() {
                       24 ventes
                     </td>
                     <td className="px-6 py-4">
-                      <span className="px-2 py-1 rounded-full bg-green-100 text-green-600 text-[10px] font-bold uppercase tracking-widest">
+                      <span className="px-2 py-1 rounded-full bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-300 text-[10px] font-bold uppercase tracking-widest">
                         Actif
                       </span>
                     </td>
@@ -78,7 +78,7 @@ export default function AdminProductsPage() {
                         <Button variant="ghost" size="icon" className="h-8 w-8">
                           <Edit2 className="h-4 w-4" />
                         </Button>
-                        <Button variant="ghost" size="icon" className="h-8 w-8 text-red-500">
+                        <Button variant="ghost" size="icon" className="h-8 w-8 text-red-500 dark:text-red-400">
                           <Trash2 className="h-4 w-4" />
                         </Button>
                         <Button variant="ghost" size="icon" className="h-8 w-8">

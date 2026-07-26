@@ -12,7 +12,7 @@ export default function ProfilePage() {
         <p className="text-muted-foreground">Gérez vos informations personnelles.</p>
       </div>
 
-      <div className="flex items-center gap-6 p-6 rounded-2xl border bg-white">
+      <div className="flex items-center gap-6 p-6 rounded-2xl border bg-white dark:bg-gray-950">
         <div className="h-20 w-20 rounded-full bg-primary flex items-center justify-center text-white text-3xl font-bold">
           JB
         </div>
@@ -22,7 +22,7 @@ export default function ProfilePage() {
         </div>
       </div>
 
-      <Card className="border-slate-100 rounded-2xl overflow-hidden">
+      <Card className="border-slate-100 dark:border-gray-800 rounded-2xl overflow-hidden">
         <CardContent className="p-8 space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-2">

@@ -12,7 +12,7 @@ export default function AdminSettingsPage() {
         <p className="text-muted-foreground">Configurez les paramètres de votre boutique YIsonBits.</p>
       </div>
 
-      <Card className="border-slate-100 rounded-2xl overflow-hidden">
+      <Card className="border-slate-100 dark:border-gray-800 rounded-2xl overflow-hidden">
         <CardContent className="p-8 space-y-8">
           <div className="space-y-6">
             <div className="flex items-center gap-3">
@@ -48,7 +48,7 @@ export default function AdminSettingsPage() {
               <div className="p-4 rounded-xl border bg-primary/5 border-primary/20">
                 <p className="font-bold text-sm">Wave</p>
                 <p className="text-xs text-muted-foreground mt-1">Numéro Wave : +226 00 00 00 00</p>
-                <p className="text-xs text-muted-foreground">Statut : <span className="text-green-500 font-bold">Connecté</span></p>
+                <p className="text-xs text-muted-foreground">Statut : <span className="text-green-500 dark:text-green-400 font-bold">Connecté</span></p>
               </div>
             </div>
           </div>

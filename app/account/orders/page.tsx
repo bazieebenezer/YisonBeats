@@ -19,14 +19,14 @@ export default function OrdersPage() {
 
       <div className="space-y-4">
         {orders.map((order) => (
-          <Card key={order.id} className="border-slate-100 overflow-hidden rounded-2xl transition-all">
+          <Card key={order.id} className="border-slate-100 dark:border-gray-800 overflow-hidden rounded-2xl transition-all">
             <CardContent className="p-6">
               <div className="flex items-start justify-between">
                 <div className="space-y-1">
                   <div className="flex items-center gap-3">
                     <p className="font-bold text-primary">{order.id}</p>
                     <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-widest ${
-                      order.status === "Payée" ? "bg-green-100 text-green-600" : "bg-yellow-100 text-yellow-600"
+                      order.status === "Payée" ? "bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-300" : "bg-yellow-100 text-yellow-600 dark:bg-yellow-900/30 dark:text-yellow-300"
                     }`}>
                       {order.status}
                     </span>
@@ -38,7 +38,7 @@ export default function OrdersPage() {
               <div className="mt-4 pt-4 border-t flex items-center justify-between">
                 <div className="flex gap-2">
                   {order.products.map((p) => (
-                    <span key={p} className="text-xs bg-slate-50 px-2 py-1 rounded-md font-medium">{p}</span>
+                    <span key={p} className="text-xs bg-slate-50 dark:bg-gray-800 px-2 py-1 rounded-md font-medium">{p}</span>
                   ))}
                 </div>
                 <Button variant="ghost" size="sm" className="gap-1 text-xs font-bold" asChild>
@@ -53,7 +53,7 @@ export default function OrdersPage() {
       </div>
 
       <Card className="border-dashed border-2 rounded-2xl p-12 flex flex-col items-center justify-center text-center space-y-4">
-        <div className="h-16 w-16 rounded-full bg-slate-50 flex items-center justify-center">
+        <div className="h-16 w-16 rounded-full bg-slate-50 dark:bg-gray-800 flex items-center justify-center">
           <ShoppingBag className="h-8 w-8 text-muted-foreground/30" />
         </div>
         <p className="text-sm text-muted-foreground max-w-md">

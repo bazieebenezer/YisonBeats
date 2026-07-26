@@ -52,7 +52,7 @@ export default function ContactPage() {
           </div>
 
           <div className="space-y-6">
-            <div className="p-6 rounded-2xl border bg-white flex items-start gap-4">
+            <div className="p-6 rounded-2xl border bg-white dark:bg-gray-950 flex items-start gap-4">
               <div className="h-12 w-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
                 <MessageSquare className="h-6 w-6" />
               </div>
@@ -63,7 +63,7 @@ export default function ContactPage() {
               </div>
             </div>
 
-            <div className="p-6 rounded-2xl border bg-white flex items-start gap-4">
+            <div className="p-6 rounded-2xl border bg-white dark:bg-gray-950 flex items-start gap-4">
               <div className="h-12 w-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
                 <Mail className="h-6 w-6" />
               </div>
@@ -74,7 +74,7 @@ export default function ContactPage() {
               </div>
             </div>
 
-            <div className="p-6 rounded-2xl border bg-white flex items-start gap-4">
+            <div className="p-6 rounded-2xl border bg-white dark:bg-gray-950 flex items-start gap-4">
               <div className="h-12 w-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
                 <MapPin className="h-6 w-6" />
               </div>
@@ -84,7 +84,7 @@ export default function ContactPage() {
               </div>
             </div>
 
-            <div className="p-6 rounded-2xl border bg-white flex items-start gap-4">
+            <div className="p-6 rounded-2xl border bg-white dark:bg-gray-950 flex items-start gap-4">
               <div className="h-12 w-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
                 <Clock className="h-6 w-6" />
               </div>

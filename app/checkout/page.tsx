@@ -48,7 +48,7 @@ export default function CheckoutPage() {
   if (step === "success") {
     return (
       <div className="container py-20 flex flex-col items-center justify-center text-center space-y-8 animate-in fade-in zoom-in duration-500">
-        <div className="h-24 w-24 rounded-full bg-green-100 flex items-center justify-center text-green-600">
+        <div className="h-24 w-24 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-300">
           <CheckCircle2 className="h-12 w-12" />
         </div>
         <div className="space-y-4 max-w-lg">
@@ -94,16 +94,16 @@ export default function CheckoutPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <label className="text-sm font-bold text-muted-foreground uppercase tracking-widest">Prénom</label>
-                  <input type="text" className="h-11 w-full rounded-xl border bg-slate-50 px-4 focus:outline-none focus:ring-2 focus:ring-primary/20" placeholder="Jean" />
+                  <input type="text" className="h-11 w-full rounded-xl border bg-slate-50 dark:bg-gray-900 px-4 focus:outline-none focus:ring-2 focus:ring-primary/20" placeholder="Jean" />
                 </div>
                 <div className="space-y-2">
                   <label className="text-sm font-bold text-muted-foreground uppercase tracking-widest">Nom</label>
-                  <input type="text" className="h-11 w-full rounded-xl border bg-slate-50 px-4 focus:outline-none focus:ring-2 focus:ring-primary/20" placeholder="Dupont" />
+                  <input type="text" className="h-11 w-full rounded-xl border bg-slate-50 dark:bg-gray-900 px-4 focus:outline-none focus:ring-2 focus:ring-primary/20" placeholder="Dupont" />
                 </div>
               </div>
               <div className="space-y-2">
                 <label className="text-sm font-bold text-muted-foreground uppercase tracking-widest">Email</label>
-                <input type="email" className="h-11 w-full rounded-xl border bg-slate-50 px-4 focus:outline-none focus:ring-2 focus:ring-primary/20" placeholder="jean.dupont@email.com" />
+                <input type="email" className="h-11 w-full rounded-xl border bg-slate-50 dark:bg-gray-900 px-4 focus:outline-none focus:ring-2 focus:ring-primary/20" placeholder="jean.dupont@email.com" />
                 <p className="text-xs text-muted-foreground">Vos fichiers seront envoyés à cette adresse.</p>
               </div>
               <Button size="lg" className="w-full h-14 font-bold" onClick={() => setStep("payment")}>
@@ -137,9 +137,9 @@ export default function CheckoutPage() {
                     </div>
                   </div>
 
-                  <div className="relative p-6 rounded-2xl border bg-slate-50 flex items-center justify-between cursor-not-allowed opacity-50">
+                  <div className="relative p-6 rounded-2xl border bg-slate-50 dark:bg-gray-900 flex items-center justify-between cursor-not-allowed opacity-50">
                     <div className="flex items-center gap-4">
-                      <div className="h-12 w-12 rounded-full bg-slate-200 flex items-center justify-center text-slate-500">
+                      <div className="h-12 w-12 rounded-full bg-slate-200 dark:bg-gray-700 flex items-center justify-center text-slate-500 dark:text-gray-400">
                         <CreditCard className="h-6 w-6" />
                       </div>
                       <div>
@@ -151,9 +151,9 @@ export default function CheckoutPage() {
                 </div>
               </div>
 
-              <div className="p-6 rounded-2xl bg-blue-50 border border-blue-100 flex items-start gap-3">
-                <AlertCircle className="h-5 w-5 text-blue-500 mt-0.5 shrink-0" />
-                <p className="text-sm text-blue-800 leading-relaxed">
+              <div className="p-6 rounded-2xl bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800 flex items-start gap-3">
+                <AlertCircle className="h-5 w-5 text-blue-500 dark:text-blue-400 mt-0.5 shrink-0" />
+                <p className="text-sm text-blue-800 dark:text-blue-300 leading-relaxed">
                   En cliquant sur "Confirmer le paiement", vous serez redirigé vers l'interface sécurisée de Wave pour finaliser la transaction.
                 </p>
               </div>
@@ -179,7 +179,7 @@ export default function CheckoutPage() {
 
         {/* Order Summary */}
         <div className="lg:col-span-5">
-          <Card className="rounded-[2rem] border-2 border-slate-100 overflow-hidden">
+          <Card className="rounded-[2rem] border-2 border-slate-100 dark:border-gray-800 overflow-hidden">
             <CardContent className="p-8 space-y-6">
               <h2 className="text-xl font-bold">Votre commande</h2>
               <div className="space-y-4 max-h-60 overflow-y-auto pr-2 no-scrollbar">
@@ -209,7 +209,7 @@ export default function CheckoutPage() {
               </div>
 
               <div className="pt-4 flex items-center justify-center gap-2 text-xs text-muted-foreground">
-                <ShieldCheck className="h-4 w-4 text-green-500" />
+                <ShieldCheck className="h-4 w-4 text-green-500 dark:text-green-400" />
                 Paiement crypté & sécurisé
               </div>
             </CardContent>

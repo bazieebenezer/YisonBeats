@@ -38,7 +38,7 @@ export default function HomePage() {
               <Button size="lg" className="h-14 px-8 text-base font-bold" asChild>
                 <Link href="/shop">Explorer la boutique</Link>
               </Button>
-              <Button size="lg" variant="outline" className="h-14 px-8 text-base font-bold border-white/10 text-black hover:bg-white/5 dark:text-white hover:text-white" asChild>
+              <Button size="lg" variant="outline" className="h-14 px-8 text-base font-bold border-white/10 dark:border-gray-800 text-black hover:bg-white/5 dark:hover:bg-gray-800 dark:text-white hover:text-white" asChild>
                 <Link href="/services">Mes services</Link>
               </Button>
             </div>
@@ -48,7 +48,7 @@ export default function HomePage() {
                 <span className="text-2xl font-bold text-white">500+</span>
                 <span className="text-xs uppercase tracking-widest text-white/40">Beats vendus</span>
               </div>
-              <div className="w-px h-8 bg-white/10" />
+              <div className="w-px h-8 bg-white/10 dark:bg-gray-800" />
               <div className="flex flex-col items-center lg:items-start">
                 <span className="text-2xl font-bold text-white">100%</span>
                 <span className="text-xs uppercase tracking-widest text-white/40">Satisfaction</span>
@@ -57,7 +57,7 @@ export default function HomePage() {
           </div>
 
           <div className="relative hidden lg:block">
-            <div className="relative aspect-square w-full max-w-[500px] mx-auto rounded-3xl overflow-hidden border border-white/10">
+            <div className="relative aspect-square w-full max-w-[500px] mx-auto rounded-3xl overflow-hidden border border-white/10 dark:border-gray-800">
               <img 
                 src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=1000&auto=format&fit=crop" 
                 alt="Studio" 
@@ -65,7 +65,7 @@ export default function HomePage() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-navy/80 via-transparent to-transparent" />
               
-              <div className="absolute bottom-6 left-6 right-6 glass p-6 rounded-2xl flex items-center gap-4 border-white/10">
+              <div className="absolute bottom-6 left-6 right-6 glass p-6 rounded-2xl flex items-center gap-4 border-white/10 dark:border-gray-800">
                 <Button size="icon" className="h-12 w-12 rounded-full shrink-0">
                   <Play className="h-6 w-6 fill-current" />
                 </Button>
@@ -101,7 +101,7 @@ export default function HomePage() {
       </section>
 
       {/* Categories */}
-      <section className="bg-slate-50 py-20 border-y">
+      <section className="bg-slate-50 dark:bg-gray-950 py-20 border-y">
         <div className="container">
           <div className="text-center space-y-4 mb-16">
             <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight">Explorez par catégories</h2>
@@ -115,7 +115,7 @@ export default function HomePage() {
               <Link 
                 key={cat.id} 
                 href={`/shop?type=${cat.name}`}
-                className="group flex flex-col items-center justify-center p-8 bg-white rounded-2xl border border-border/50 hover:border-primary/50 transition-all duration-300"
+                className="group flex flex-col items-center justify-center p-8 bg-white dark:bg-gray-950 rounded-2xl border border-border/50 hover:border-primary/50 transition-all duration-300"
               >
                 <div className="mb-4 text-muted-foreground group-hover:text-primary transition-colors">
                   {/* We would render actual icons here */}

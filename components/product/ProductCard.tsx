@@ -34,7 +34,7 @@ export function ProductCard({ product }: ProductCardProps) {
             {product.type}
           </span>
           {product.isFree ? (
-            <span className="w-fit rounded-full bg-green-500/90 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white ">
+            <span className="w-fit rounded-full bg-green-500/90 dark:bg-green-600/90 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white ">
               Gratuit
             </span>
           ) : (
@@ -85,7 +85,7 @@ export function ProductCard({ product }: ProductCardProps) {
               <Button
                 variant="outline"
                 size="icon"
-                className="h-10 w-10 rounded-full border-green-500 text-green-500 hover:bg-green-500 hover:text-white"
+                className="h-10 w-10 rounded-full border-green-500 dark:border-green-600 text-green-500 dark:text-green-400 hover:bg-green-500 dark:hover:bg-green-600 hover:text-white"
                 asChild
               >
                 <a href={product.downloadUrl} download>

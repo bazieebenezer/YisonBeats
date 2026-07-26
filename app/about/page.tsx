@@ -67,7 +67,7 @@ export default function AboutPage() {
           ].map((item) => {
             const Icon = item.icon
             return (
-              <div key={item.title} className="p-8 rounded-2xl border bg-white space-y-4">
+              <div key={item.title} className="p-8 rounded-2xl border bg-white dark:bg-gray-950 space-y-4">
                 <div className="h-12 w-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
                   <Icon className="h-6 w-6" />
                 </div>
@@ -92,7 +92,7 @@ export default function AboutPage() {
               <Button size="lg" className="h-14 px-10 text-base font-bold" asChild>
                 <Link href="/services">Mes services</Link>
               </Button>
-              <Button size="lg" variant="outline" className="h-14 px-10 text-base font-bold border-white/10 text-white hover:bg-white/5" asChild>
+              <Button size="lg" variant="outline" className="h-14 px-10 text-base font-bold border-white/10 dark:border-gray-700 text-white hover:bg-white/5 dark:hover:bg-gray-800" asChild>
                 <Link href="/contact">Me contacter</Link>
               </Button>
             </div>

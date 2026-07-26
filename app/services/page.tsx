@@ -30,7 +30,7 @@ export default function ServicesPage() {
 
       {/* Contact Section */}
       <section className="container">
-        <div className="rounded-[3rem] bg-slate-50 border p-12 md:p-20 flex flex-col md:flex-row gap-12 items-center">
+        <div className="rounded-[3rem] bg-slate-50 dark:bg-gray-950 border p-12 md:p-20 flex flex-col md:flex-row gap-12 items-center">
           <div className="space-y-6 flex-1 text-center md:text-left">
             <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight">Un projet spécifique en tête ?</h2>
             <p className="text-lg text-muted-foreground">
@@ -47,7 +47,7 @@ export default function ServicesPage() {
           </div>
           
           <div className="w-full md:w-1/3 space-y-4">
-            <div className="p-6 rounded-2xl bg-white border flex items-center gap-4">
+            <div className="p-6 rounded-2xl bg-white dark:bg-gray-950 border flex items-center gap-4">
               <div className="h-12 w-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
                 <Phone className="h-6 w-6" />
               </div>
@@ -56,7 +56,7 @@ export default function ServicesPage() {
                 <p className="font-bold">+226 00 00 00 00</p>
               </div>
             </div>
-            <div className="p-6 rounded-2xl bg-white border flex items-center gap-4">
+            <div className="p-6 rounded-2xl bg-white dark:bg-gray-950 border flex items-center gap-4">
               <div className="h-12 w-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
                 <Mail className="h-6 w-6" />
               </div>

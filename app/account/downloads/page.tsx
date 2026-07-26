@@ -16,7 +16,7 @@ export default function DownloadsPage() {
 
       <div className="grid grid-cols-1 gap-4">
         {purchasedItems.map((item) => (
-          <div key={item.id} className="flex items-center gap-6 p-4 rounded-2xl border bg-white transition-all group">
+          <div key={item.id} className="flex items-center gap-6 p-4 rounded-2xl border bg-white dark:bg-gray-950 transition-all group">
             <div className="relative h-20 w-20 rounded-xl overflow-hidden shrink-0 border">
               <Image src={item.coverImage} alt={item.name} fill className="object-cover" />
             </div>
@@ -33,7 +33,7 @@ export default function DownloadsPage() {
                 <Button variant="secondary" size="sm" className="h-8 text-xs font-bold rounded-lg">
                   <Play className="mr-2 h-3 w-3 fill-current" /> Écouter
                 </Button>
-                <Button size="sm" className="h-8 text-xs font-bold rounded-lg bg-green-500 hover:bg-green-600">
+                <Button size="sm" className="h-8 text-xs font-bold rounded-lg bg-green-500 hover:bg-green-600 dark:bg-green-600 dark:hover:bg-green-700">
                   <Download className="mr-2 h-3 w-3" /> Télécharger ({item.size})
                 </Button>
               </div>

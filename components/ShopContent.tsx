@@ -108,7 +108,7 @@ export default function ShopContent() {
                     "px-3 py-1.5 rounded-lg text-xs font-medium border transition-all",
                     selectedType === cat.name 
                       ? "bg-primary border-primary text-white" 
-                      : "bg-white border-border hover:border-primary/50"
+                      : "bg-white dark:bg-gray-900 border-border hover:border-primary/50"
                   )}
                 >
                   {cat.name}
@@ -128,7 +128,7 @@ export default function ShopContent() {
                     "px-3 py-1.5 rounded-lg text-xs font-medium border transition-all",
                     selectedStyle === style 
                       ? "bg-primary border-primary text-white" 
-                      : "bg-white border-border hover:border-primary/50"
+                      : "bg-white dark:bg-gray-900 border-border hover:border-primary/50"
                   )}
                 >
                   {style}

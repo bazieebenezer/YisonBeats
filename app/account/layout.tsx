@@ -51,7 +51,7 @@ export default function AccountLayout({
                     "flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-bold transition-all",
                     isActive 
                       ? "bg-primary text-white" 
-                      : "text-muted-foreground hover:bg-slate-50 hover:text-foreground"
+                      : "text-muted-foreground hover:bg-slate-50 dark:hover:bg-gray-800 hover:text-foreground"
                   )}
                 >
                   <Icon className="h-5 w-5" />
@@ -59,13 +59,13 @@ export default function AccountLayout({
                 </Link>
               )
             })}
-            <button className="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-bold text-red-500 hover:bg-red-50 transition-all mt-4">
+            <button className="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-bold text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition-all mt-4">
               <LogOut className="h-5 w-5" />
               Déconnexion
             </button>
           </nav>
 
-          <div className="p-6 rounded-2xl bg-slate-50 border flex flex-col items-center text-center gap-4">
+          <div className="p-6 rounded-2xl bg-slate-50 dark:bg-gray-900 border flex flex-col items-center text-center gap-4">
             <ShieldCheck className="h-10 w-10 text-primary" />
             <p className="text-xs font-medium text-muted-foreground leading-relaxed">
               Votre compte est sécurisé. Toutes vos données sont cryptées.

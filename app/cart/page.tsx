@@ -15,7 +15,7 @@ export default function CartPage() {
   if (totalCount === 0) {
     return (
       <div className="container py-20 flex flex-col items-center justify-center space-y-6">
-        <div className="h-24 w-24 rounded-full bg-slate-50 flex items-center justify-center">
+        <div className="h-24 w-24 rounded-full bg-slate-50 dark:bg-gray-900 flex items-center justify-center">
           <ShoppingBag className="h-12 w-12 text-muted-foreground/30" />
         </div>
         <div className="text-center space-y-2">
@@ -37,7 +37,7 @@ export default function CartPage() {
         {/* Items List */}
         <div className="lg:col-span-8 space-y-6">
           {items.map((item) => (
-            <div key={item.id} className="flex flex-col sm:flex-row items-start sm:items-center gap-4 p-4 rounded-2xl border bg-white">
+            <div key={item.id} className="flex flex-col sm:flex-row items-start sm:items-center gap-4 p-4 rounded-2xl border bg-white dark:bg-gray-950">
               <div className="relative h-20 w-20 md:h-24 md:w-24 rounded-xl overflow-hidden shrink-0 border">
                 <Image src={item.coverImage} alt={item.name} fill className="object-cover" />
               </div>
@@ -59,7 +59,7 @@ export default function CartPage() {
                   <Button 
                     variant="ghost" 
                     size="icon" 
-                    className="text-muted-foreground hover:text-red-500 hover:bg-red-50"
+                    className="text-muted-foreground hover:text-red-500 hover:bg-red-50 dark:hover:text-red-400 dark:hover:bg-red-900/20"
                     onClick={() => removeItem(item.id)}
                   >
                     <Trash2 className="h-4 w-4" />
@@ -72,7 +72,7 @@ export default function CartPage() {
 
         {/* Summary */}
         <div className="lg:col-span-4 space-y-6">
-          <Card className="rounded-[2rem] border-2 border-slate-100 overflow-hidden">
+          <Card className="rounded-[2rem] border-2 border-slate-100 dark:border-gray-800 overflow-hidden">
             <CardContent className="p-8 space-y-6">
               <h2 className="text-xl font-bold">Récapitulatif</h2>
               
@@ -99,7 +99,7 @@ export default function CartPage() {
                 </Button>
                 
                 <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground">
-                  <ShieldCheck className="h-4 w-4 text-green-500" />
+                  <ShieldCheck className="h-4 w-4 text-green-500 dark:text-green-400" />
                   Paiement 100% sécurisé via Wave
                 </div>
               </div>
@@ -112,7 +112,7 @@ export default function CartPage() {
               <input 
                 type="text" 
                 placeholder="Entrez votre code" 
-                className="flex-1 bg-white border border-border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-primary"
+                className="flex-1 bg-white dark:bg-gray-950 border border-border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-primary"
               />
               <Button size="sm">Appliquer</Button>
             </div>
