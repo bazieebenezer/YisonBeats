@@ -12,21 +12,14 @@ interface ThemeContextType {
 const ThemeContext = React.createContext<ThemeContextType | undefined>(undefined)
 
 function getInitialTheme(): Theme {
-  if (typeof window !== "undefined") {
+  try {
     const stored = localStorage.getItem("theme")
-    if (stored === "light" || stored === "dark") return stored
+    if (stored === "dark") return "dark"
+  } catch {}
+  try {
     if (window.matchMedia("(prefers-color-scheme: dark)").matches) return "dark"
-  }
+  } catch {}
   return "light"
-}
-
-function applyTheme(theme: Theme) {
-  const root = document.documentElement
-  if (theme === "dark") {
-    root.classList.add("dark")
-  } else {
-    root.classList.remove("dark")
-  }
 }
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
@@ -35,21 +28,14 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   React.useEffect(() => {
     const initial = getInitialTheme()
     setTheme(initial)
-    applyTheme(initial)
+    document.documentElement.classList.toggle("dark", initial === "dark")
   }, [])
-
-  React.useEffect(() => {
-    if (theme !== getInitialTheme()) {
-      applyTheme(theme)
-      localStorage.setItem("theme", theme)
-    }
-  }, [theme])
 
   const toggleTheme = React.useCallback(() => {
     setTheme((prev) => {
       const next = prev === "light" ? "dark" : "light"
-      applyTheme(next)
-      localStorage.setItem("theme", next)
+      document.documentElement.classList.toggle("dark", next === "dark")
+      try { localStorage.setItem("theme", next) } catch {}
       return next
     })
   }, [])
