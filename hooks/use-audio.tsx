@@ -16,8 +16,7 @@ interface AudioContextType {
   seek: (time: number) => void
 }
 
-// Renamed to avoid shadowing the browser's native AudioContext (Web Audio API)
-const PlayerContext = React.createContext<AudioContextType | undefined>(undefined)
+const AudioContext = React.createContext<AudioContextType | undefined>(undefined)
 
 /** Parse a "M:SS" or "MM:SS" duration string into seconds */
 function parseDurationString(dur?: string): number {
@@ -315,14 +314,14 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
   }), [currentTrack, isPlaying, playTrack, togglePlay, stop, progress, duration, volume, setVolume, seek])
 
   return (
-    <PlayerContext.Provider value={value}>
+    <AudioContext.Provider value={value}>
       {children}
-    </PlayerContext.Provider>
+    </AudioContext.Provider>
   )
 }
 
 export const useAudio = () => {
-  const context = React.useContext(PlayerContext)
+  const context = React.useContext(AudioContext)
   if (context === undefined) {
     throw new Error('useAudio must be used within an AudioProvider')
   }
