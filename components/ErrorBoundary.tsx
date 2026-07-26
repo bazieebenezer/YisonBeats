@@ -21,8 +21,10 @@ export class ErrorBoundary extends React.Component<
     console.error("Component stack:", info.componentStack)
     console.error("Error name:", error.name)
     console.error("Error message:", error.message)
-    // Extra log for debugging invalid children
     console.error("Error cause (if any):", (error as any).cause)
+    
+    // Log the props to see if something passed is an object
+    console.error("ErrorBoundary Props:", this.props)
   }
 
   render() {
