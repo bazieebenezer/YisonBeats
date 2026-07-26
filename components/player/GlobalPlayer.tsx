@@ -24,16 +24,7 @@ export function GlobalPlayer() {
   const [dragging, setDragging] = React.useState(false)
   const dragRef = React.useRef({ startX: 0, startY: 0, elX: 0, elY: 0 })
 
-  if (!currentTrack) return null
-
-  const fmt = (t: number) => `${Math.floor(t / 60)}:${Math.floor(t % 60).toString().padStart(2, '0')}`
-
-  const onPointerDown = (e: React.PointerEvent) => {
-    setDragging(true)
-    dragRef.current = { startX: e.clientX, startY: e.clientY, elX: pos.x, elY: pos.y }
-    e.currentTarget.setPointerCapture(e.pointerId)
-  }
-
+  // Handle drag movement
   React.useEffect(() => {
     if (!dragging) return
     const onMove = (e: PointerEvent) => setPos({
@@ -45,6 +36,19 @@ export function GlobalPlayer() {
     window.addEventListener("pointerup", onUp)
     return () => { window.removeEventListener("pointermove", onMove); window.removeEventListener("pointerup", onUp) }
   }, [dragging])
+
+  if (!currentTrack) return null
+
+  const fmt = (t: number) => {
+    if (isNaN(t) || !isFinite(t)) return "0:00"
+    return `${Math.floor(t / 60)}:${Math.floor(t % 60).toString().padStart(2, '0')}`
+  }
+
+  const onPointerDown = (e: React.PointerEvent) => {
+    setDragging(true)
+    dragRef.current = { startX: e.clientX, startY: e.clientY, elX: pos.x, elY: pos.y }
+    e.currentTarget.setPointerCapture(e.pointerId)
+  }
 
   return (
     <div className="fixed z-[100] select-none" style={{ left: pos.x, bottom: pos.y }}>
@@ -64,12 +68,13 @@ export function GlobalPlayer() {
                 <p className="text-xs text-white/50 truncate">{currentTrack.style}</p>
               </div>
             </div>
+
             <div className="flex items-center gap-2">
               <div className="relative flex-1 h-1 bg-white/20 rounded-full overflow-hidden">
-                <div className="absolute top-0 left-0 h-full bg-white/90 rounded-full" style={{ width: `${(progress / (duration || 1)) * 100}%` }} />
+                <div className="absolute top-0 left-0 h-full bg-white/90 rounded-full transition-[width] duration-200" style={{ width: `${(progress / (duration || 1)) * 100}%` }} />
                 <input type="range" min="0" max={duration || 0} step="0.1" value={progress} onChange={(e) => seek(parseFloat(e.target.value))} className="absolute inset-0 w-full opacity-0 cursor-pointer" />
               </div>
-              <span className="text-[10px] text-white/40 tabular-nums">{fmt(progress)}</span>
+              <span className="text-[10px] text-white/40 tabular-nums">{fmt(progress)} / {fmt(duration)}</span>
             </div>
           </div>
         </div>

@@ -51,10 +51,10 @@ export function Footer() {
               <input 
                 type="email" 
                 placeholder="Votre email" 
-                className="bg-white/5 border border-white/10 rounded-md px-3 py-2 text-sm w-full focus:outline-none focus:ring-1 focus:ring-primary"
+                className="bg-white/5 border border-white/10 rounded-md px-4 py-3 text-sm w-full focus:outline-none focus:ring-1 focus:ring-primary"
               />
-              <button className="bg-primary hover:bg-primary/90 text-white p-2 rounded-md transition-colors">
-                <Mail className="h-4 w-4" />
+              <button className="bg-primary hover:bg-primary/90 text-white p-3 rounded-md transition-colors">
+                <Mail className="h-5 w-5" />
               </button>
             </div>
           </div>
