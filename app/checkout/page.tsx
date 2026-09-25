@@ -243,9 +243,9 @@ export default function CheckoutPage() {
                 )}
               </div>
 
-              <div className="p-6 rounded-xl bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800 flex items-start gap-3">
-                <AlertCircle className="h-5 w-5 text-blue-500 dark:text-blue-400 mt-0.5 shrink-0" aria-hidden="true" />
-                <p className="text-sm text-blue-800 dark:text-blue-300 leading-relaxed">
+              <div className="p-6 rounded-xl bg-muted/40 border border-border flex items-start gap-3">
+                <AlertCircle className="h-5 w-5 text-foreground mt-0.5 shrink-0" aria-hidden="true" />
+                <p className="text-sm text-foreground leading-relaxed">
                   {activeMethod.needsPhone
                     ? `En cliquant sur "Confirmer le paiement", une invitation de paiement de ${formatPrice(totalPrice)} sera envoyée à votre numéro ${activeMethod.name}. Vous la validerez sur votre téléphone.`
                     : "En cliquant sur \"Confirmer le paiement\", vous serez redirigé vers la passerelle sécurisée (CinetPay / Paystack) pour finaliser la transaction par carte."}
