@@ -27,12 +27,17 @@ const navigation = [
 ]
 
 export function Header() {
+  const [mounted, setMounted] = React.useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false)
   const [searchQuery, setSearchQuery] = React.useState("")
   const pathname = usePathname()
   const router = useRouter()
   const { totalCount } = useCart()
   const { theme, toggleTheme } = useTheme()
+
+  React.useEffect(() => {
+    setMounted(true)
+  }, [])
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault()
@@ -87,8 +92,14 @@ export function Header() {
             />
           </form>
 
-          <Button variant="ghost" size="icon" onClick={toggleTheme} aria-label={theme === "light" ? "Activer le mode sombre" : "Activer le mode clair"} className="text-muted-foreground hover:text-foreground">
-            {theme === "light" ? <Moon className="h-5 w-5" /> : <Sun className="h-5 w-5" />}
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={toggleTheme}
+            aria-label={mounted && theme === "dark" ? "Activer le mode clair" : "Activer le mode sombre"}
+            className="text-muted-foreground hover:text-foreground"
+          >
+            {mounted && theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
           </Button>
 
           <Button variant="ghost" size="icon" className="relative text-muted-foreground hover:text-foreground" asChild>
@@ -139,6 +150,24 @@ export function Header() {
               </Link>
             ))}
             <div className="pt-3 mt-1 border-t border-border flex flex-col gap-3">
+              <Button
+                variant="outline"
+                className="w-full justify-between"
+                onClick={toggleTheme}
+                type="button"
+              >
+                <span className="flex items-center">
+                  {mounted && theme === "dark" ? (
+                    <Sun className="mr-2 h-5 w-5" aria-hidden="true" />
+                  ) : (
+                    <Moon className="mr-2 h-5 w-5" aria-hidden="true" />
+                  )}
+                  {mounted && theme === "dark" ? "Mode clair" : "Mode sombre"}
+                </span>
+                <span className="text-xs font-semibold px-2 py-0.5 rounded bg-muted text-muted-foreground">
+                  {mounted && theme === "dark" ? "Actif : Sombre" : "Actif : Clair"}
+                </span>
+              </Button>
               <Button variant="outline" className="w-full justify-start" asChild>
                 <Link href="/account" onClick={() => setIsMobileMenuOpen(false)}>
                   <User className="mr-2 h-5 w-5" aria-hidden="true" /> Compte

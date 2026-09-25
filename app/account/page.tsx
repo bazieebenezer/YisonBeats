@@ -14,7 +14,7 @@ export default function AccountDashboard() {
     <div className="space-y-8 animate-in fade-in duration-500">
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {stats.map((stat) => (
-          <Card key={stat.name} className="border-none bg-card  overflow-hidden">
+          <Card key={stat.name} className="border border-border/60 bg-card overflow-hidden">
             <CardContent className="p-6">
               <div className={cn("h-10 w-10 rounded-xl flex items-center justify-center mb-4", stat.bg, stat.color)}>
                 <stat.icon className="h-5 w-5" aria-hidden="true" />

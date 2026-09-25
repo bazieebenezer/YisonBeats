@@ -30,7 +30,8 @@
     --radius: 0.5rem;
   }
 
-  .dark {
+  .dark,
+  html.dark {
     color-scheme: dark;
     --background: 0 0% 0%;
     --foreground: 0 0% 100%;
@@ -63,6 +64,12 @@
   }
   body {
     @apply bg-background text-foreground font-sans antialiased;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+  input,
+  textarea,
+  select {
+    color-scheme: inherit;
   }
   h1,
   h2,

@@ -17,7 +17,7 @@ export default function AdminCustomersPage() {
         <p className="text-muted-foreground">Liste des clients ayant effectué des achats sur YIsonBits.</p>
       </div>
 
-      <Card className="border-none rounded-xl overflow-hidden ">
+      <Card className="border border-border/60 rounded-xl overflow-hidden">
         <CardContent className="p-0 bg-card">
           <div className="overflow-x-auto">
             <table className="w-full text-left">

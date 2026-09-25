@@ -60,7 +60,7 @@ export function Waveform({
   interactive = false,
   onSeek,
   activeClass = "bg-primary",
-  inactiveClass = "bg-white/25",
+  inactiveClass = "bg-foreground/20",
   className,
   label = "Prévisualisation",
 }: WaveformProps) {

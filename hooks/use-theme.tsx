@@ -2,16 +2,27 @@
 
 import * as React from "react"
 
-type Theme = "light" | "dark"
+export type Theme = "light" | "dark"
 
 interface ThemeContextType {
   theme: Theme
   toggleTheme: () => void
+  setTheme: (theme: Theme) => void
 }
 
 const ThemeContext = React.createContext<ThemeContextType | undefined>(undefined)
 
 const THEME_KEY = "theme"
+
+function applyThemeClass(theme: Theme) {
+  if (typeof document === "undefined") return
+  const isDark = theme === "dark"
+  document.documentElement.classList.toggle("dark", isDark)
+  const meta = document.querySelector('meta[name="theme-color"]')
+  if (meta) {
+    meta.setAttribute("content", isDark ? "#000000" : "#ffffff")
+  }
+}
 
 function getInitialTheme(): Theme {
   try {
@@ -25,29 +36,59 @@ function getInitialTheme(): Theme {
 }
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = React.useState<Theme>("light")
+  const [theme, setThemeState] = React.useState<Theme>("light")
+  const [mounted, setMounted] = React.useState(false)
 
   React.useEffect(() => {
-    setTheme(getInitialTheme())
+    setMounted(true)
+    const initial = getInitialTheme()
+    setThemeState(initial)
+    applyThemeClass(initial)
+
+    // Listen for storage events across tabs
+    const handleStorage = (e: StorageEvent) => {
+      if (e.key === THEME_KEY && (e.newValue === "dark" || e.newValue === "light")) {
+        setThemeState(e.newValue)
+        applyThemeClass(e.newValue)
+      }
+    }
+
+    // Listen for system theme changes if not manually set
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)")
+    const handleMediaChange = (e: MediaQueryListEvent) => {
+      try {
+        if (!localStorage.getItem(THEME_KEY)) {
+          const next = e.matches ? "dark" : "light"
+          setThemeState(next)
+          applyThemeClass(next)
+        }
+      } catch {}
+    }
+
+    window.addEventListener("storage", handleStorage)
+    mediaQuery.addEventListener("change", handleMediaChange)
+
+    return () => {
+      window.removeEventListener("storage", handleStorage)
+      mediaQuery.removeEventListener("change", handleMediaChange)
+    }
   }, [])
 
-  React.useEffect(() => {
-    document.documentElement.classList.toggle("dark", theme === "dark")
-    const meta = document.querySelector('meta[name="theme-color"]')
-    if (meta) {
-      meta.setAttribute("content", theme === "dark" ? "#000000" : "#ffffff")
-    }
+  const setTheme = React.useCallback((nextTheme: Theme) => {
+    setThemeState(nextTheme)
+    applyThemeClass(nextTheme)
     try {
-      localStorage.setItem(THEME_KEY, theme)
+      localStorage.setItem(THEME_KEY, nextTheme)
     } catch {}
-  }, [theme])
+  }, [])
 
   const toggleTheme = React.useCallback(() => {
-    setTheme((prev) => (prev === "light" ? "dark" : "light"))
-  }, [])
+    const nextTheme: Theme = theme === "light" ? "dark" : "light"
+    setTheme(nextTheme)
+  }, [theme, setTheme])
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+    <ThemeContext.Provider value={{ theme: mounted ? theme : "light", toggleTheme, setTheme }}>
       {children}
     </ThemeContext.Provider>
   )

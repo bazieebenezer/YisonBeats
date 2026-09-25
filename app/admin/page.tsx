@@ -25,7 +25,7 @@ export default function AdminDashboard() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {stats.map((stat) => (
-          <Card key={stat.name} className="border-none bg-card  overflow-hidden">
+          <Card key={stat.name} className="border border-border/60 bg-card overflow-hidden">
             <CardContent className="p-6">
               <div className="flex items-start justify-between mb-4">
                 <div className={cn("h-10 w-10 rounded-xl flex items-center justify-center bg-muted/60", stat.color)}>
@@ -43,7 +43,7 @@ export default function AdminDashboard() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <Card className="lg:col-span-2 border-none rounded-xl overflow-hidden ">
+        <Card className="lg:col-span-2 border border-border/60 rounded-xl overflow-hidden">
           <div className="p-6 border-b border-border/60 flex items-center justify-between bg-card">
             <h3 className="font-bold">Commandes récentes</h3>
             <button className="text-xs font-bold text-primary hover:underline">Voir tout</button>
@@ -87,7 +87,7 @@ export default function AdminDashboard() {
           </CardContent>
         </Card>
 
-        <Card className="border-none rounded-xl overflow-hidden bg-card ">
+        <Card className="border border-border/60 rounded-xl overflow-hidden bg-card">
           <div className="p-6 border-b border-border/60">
             <h3 className="font-bold">Produits populaires</h3>
           </div>

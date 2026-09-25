@@ -18,7 +18,7 @@ export default function AdminProductsPage() {
         </Button>
       </div>
 
-      <Card className="border-none rounded-xl overflow-hidden ">
+      <Card className="border border-border/60 rounded-xl overflow-hidden">
         <div className="p-6 border-b border-border/60 flex items-center justify-between bg-card">
           <div className="relative w-72">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" aria-hidden="true" />

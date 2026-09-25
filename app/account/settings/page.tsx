@@ -2,9 +2,12 @@
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Bell, Lock, Globe, Eye, EyeOff } from "lucide-react"
+import { Bell, Lock, Globe, Eye, EyeOff, Sun, Moon } from "lucide-react"
+import { cn } from "@/lib/utils"
+import { useTheme } from "@/hooks/use-theme"
 
 export default function SettingsPage() {
+  const { theme, setTheme } = useTheme()
   return (
     <div className="space-y-8 animate-in fade-in duration-500">
       <div className="space-y-2">
@@ -62,6 +65,39 @@ export default function SettingsPage() {
               <h3 className="font-bold text-lg">Préférences</h3>
             </div>
             <div className="space-y-4 ml-14">
+              <div className="space-y-2">
+                <label className="text-sm font-bold text-muted-foreground uppercase tracking-widest block">Thème d&apos;affichage</label>
+                <div className="flex flex-wrap gap-3">
+                  <button
+                    type="button"
+                    onClick={() => setTheme("light")}
+                    aria-pressed={theme === "light"}
+                    className={cn(
+                      "flex items-center gap-2 px-4 py-2.5 rounded-lg border text-sm font-medium transition-colors",
+                      theme === "light"
+                        ? "border-primary bg-primary text-primary-foreground"
+                        : "border-border bg-card text-muted-foreground hover:text-foreground"
+                    )}
+                  >
+                    <Sun className="h-4 w-4" aria-hidden="true" />
+                    Mode clair
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setTheme("dark")}
+                    aria-pressed={theme === "dark"}
+                    className={cn(
+                      "flex items-center gap-2 px-4 py-2.5 rounded-lg border text-sm font-medium transition-colors",
+                      theme === "dark"
+                        ? "border-primary bg-primary text-primary-foreground"
+                        : "border-border bg-card text-muted-foreground hover:text-foreground"
+                    )}
+                  >
+                    <Moon className="h-4 w-4" aria-hidden="true" />
+                    Mode sombre
+                  </button>
+                </div>
+              </div>
               <div className="space-y-2">
                 <label htmlFor="langue" className="text-sm font-bold text-muted-foreground uppercase tracking-widest">Langue</label>
                 <select id="langue" className="h-11 w-full max-w-xs rounded-lg border border-border bg-muted/50 px-4 transition-colors focus:border-primary/50 focus:ring-2 focus:ring-primary/20">

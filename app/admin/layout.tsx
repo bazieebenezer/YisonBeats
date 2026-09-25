@@ -12,10 +12,13 @@ import {
   Plus,
   ArrowUpRight,
   Search,
-  MoreHorizontal
+  MoreHorizontal,
+  Sun,
+  Moon
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
+import { useTheme } from "@/hooks/use-theme"
 
 export default function AdminLayout({
   children,
@@ -23,6 +26,12 @@ export default function AdminLayout({
   children: React.ReactNode
 }) {
   const pathname = usePathname()
+  const { theme, toggleTheme } = useTheme()
+  const [mounted, setMounted] = React.useState(false)
+
+  React.useEffect(() => {
+    setMounted(true)
+  }, [])
 
   const navLinks = [
     { name: "Vue d'ensemble", href: "/admin", icon: BarChart3 },
@@ -88,7 +97,16 @@ export default function AdminLayout({
             />
           </div>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={toggleTheme}
+              aria-label={mounted && theme === "dark" ? "Activer le mode clair" : "Activer le mode sombre"}
+              className="text-muted-foreground hover:text-foreground"
+            >
+              {mounted && theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+            </Button>
             <Button size="sm" className="gap-2">
               <Plus className="h-4 w-4" aria-hidden="true" /> Nouveau produit
             </Button>
