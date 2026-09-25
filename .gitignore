@@ -1,6 +1,5 @@
 node_modules/
 .next/
 
-.BOT-IGNORE
 .agents/
 skills-lock.json
