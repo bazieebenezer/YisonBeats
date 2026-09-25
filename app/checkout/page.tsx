@@ -109,7 +109,7 @@ export default function CheckoutPage() {
   if (step === "success") {
     return (
       <div className="container py-20 flex flex-col items-center justify-center text-center space-y-8 animate-in fade-in zoom-in duration-500">
-        <div className="h-24 w-24 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-300">
+        <div className="h-24 w-24 rounded-full bg-green-700 text-white dark:bg-green-700 flex items-center justify-center">
           <CheckCircle2 className="h-12 w-12" aria-hidden="true" />
         </div>
         <div className="space-y-4 max-w-lg">
