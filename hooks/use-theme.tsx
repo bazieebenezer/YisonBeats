@@ -30,7 +30,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       document.documentElement.classList.toggle("dark", next === "dark")
       const meta = document.querySelector('meta[name="theme-color"]')
       if (meta) {
-        meta.setAttribute("content", next === "dark" ? "#121212" : "#ffffff")
+        meta.setAttribute("content", next === "dark" ? "#000000" : "#ffffff")
       }
     }
     const initial = getInitialTheme()
@@ -44,7 +44,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       document.documentElement.classList.toggle("dark", next === "dark")
       const meta = document.querySelector('meta[name="theme-color"]')
       if (meta) {
-        meta.setAttribute("content", next === "dark" ? "#121212" : "#ffffff")
+        meta.setAttribute("content", next === "dark" ? "#000000" : "#ffffff")
       }
       try { localStorage.setItem("theme", next) } catch {}
       return next
