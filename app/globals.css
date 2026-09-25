@@ -2,92 +2,99 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: 0 0% 100%;
-  --foreground: 222.2 84% 4.9%;
-
-  --card: 0 0% 100%;
-  --card-foreground: 222.2 84% 4.9%;
-
-  --popover: 0 0% 100%;
-  --popover-foreground: 222.2 84% 4.9%;
-
-  --primary: 207 75% 44%;
-  --primary-foreground: 210 40% 98%;
-
-  --secondary: 222 100% 61%;
-  --secondary-foreground: 210 40% 98%;
-
-  --muted: 210 40% 96.1%;
-  --muted-foreground: 215.4 16.3% 46.9%;
-
-  --accent: 210 40% 96.1%;
-  --accent-foreground: 222.2 47.4% 11.2%;
-
-  --destructive: 0 84.2% 60.2%;
-  --destructive-foreground: 210 40% 98%;
-
-  --border: 214.3 31.8% 91.4%;
-  --input: 214.3 31.8% 91.4%;
-  --ring: 222.2 84% 4.9%;
-
-  --radius: 0.75rem;
-}
-
-html.dark {
-  --background: 0 0% 3%;
-  --foreground: 210 40% 98%;
-
-  --card: 0 0% 5%;
-  --card-foreground: 210 40% 98%;
-
-  --popover: 0 0% 5%;
-  --popover-foreground: 210 40% 98%;
-
-  --primary: 207 75% 54%;
-  --primary-foreground: 0 0% 100%;
-
-  --secondary: 222 100% 65%;
-  --secondary-foreground: 0 0% 100%;
-
-  --muted: 0 0% 10%;
-  --muted-foreground: 215 20.2% 65.1%;
-
-  --accent: 0 0% 12%;
-  --accent-foreground: 210 40% 98%;
-
-  --destructive: 0 62.8% 40%;
-  --destructive-foreground: 210 40% 98%;
-
-  --border: 0 0% 14%;
-  --input: 0 0% 14%;
-  --ring: 212.7 26.8% 83.9%;
-}
-
 @layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 9%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+    --accent: 0 0% 95%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 72% 45%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 89%;
+    --input: 0 0% 89%;
+    --ring: 0 0% 9%;
+    --navy: 0 0% 9%;
+    --navy-foreground: 0 0% 100%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 0 0% 7%;
+    --foreground: 0 0% 95%;
+    --card: 0 0% 9%;
+    --card-foreground: 0 0% 95%;
+    --popover: 0 0% 9%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 0 0% 95%;
+    --primary-foreground: 0 0% 7%;
+    --secondary: 0 0% 13%;
+    --secondary-foreground: 0 0% 95%;
+    --muted: 0 0% 13%;
+    --muted-foreground: 0 0% 63%;
+    --accent: 0 0% 13%;
+    --accent-foreground: 0 0% 95%;
+    --destructive: 0 72% 55%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 22%;
+    --input: 0 0% 22%;
+    --ring: 0 0% 63%;
+    --navy: 0 0% 95%;
+    --navy-foreground: 0 0% 7%;
+  }
+
   * {
     @apply border-border;
   }
+  html {
+    scroll-behavior: smooth;
+  }
   body {
-    @apply bg-background text-foreground font-sans overflow-x-hidden;
+    @apply bg-background text-foreground font-sans antialiased;
   }
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-display font-bold tracking-tight;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-sans tracking-tight text-balance;
+  }
+  ::selection {
+    background: hsl(var(--foreground) / 0.12);
+  }
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-ring;
   }
 }
 
-.glass {
-  background: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+@keyframes waveform-dance {
+  0%, 100% {
+    transform: scaleY(0.55);
+  }
+  50% {
+    transform: scaleY(1.2);
+  }
 }
 
-html.dark .glass {
-  background: rgba(2, 24, 43, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+.waveform-dancing > * {
+  transform-origin: center;
+  animation: waveform-dance 0.7s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .waveform-dancing > * {
+    animation: none;
+  }
 }
 
 @layer utilities {
@@ -97,5 +104,11 @@ html.dark .glass {
   }
   .no-scrollbar::-webkit-scrollbar {
     display: none;
+  }
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+  .hover-lift {
+    @apply transition-transform duration-300 hover:-translate-y-0.5;
   }
 }

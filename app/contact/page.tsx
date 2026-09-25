@@ -4,13 +4,11 @@ import { Button } from "@/components/ui/button"
 export default function ContactPage() {
   return (
     <div className="pb-20">
-      <section className="bg-navy py-24 text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-primary rounded-full -mr-48 -mt-48" />
-        </div>
-        <div className="container relative z-10 space-y-6 text-center">
+      <section className="container py-16 md:py-24">
+        <div className="space-y-5 text-center max-w-3xl mx-auto">
+          <p className="text-xs font-medium uppercase tracking-[0.3em] text-muted-foreground">Restons en contact</p>
           <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight">Contact</h1>
-          <p className="text-xl text-white/60 max-w-3xl mx-auto">
+          <p className="text-xl text-muted-foreground">
             Une question, un projet ? Je suis à votre écoute.
           </p>
         </div>
@@ -30,20 +28,20 @@ export default function ContactPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <label htmlFor="name" className="text-sm font-bold text-muted-foreground uppercase tracking-widest">Nom</label>
-                  <input id="name" type="text" className="h-11 w-full rounded-xl border bg-muted/30 px-4 focus:outline-none focus:ring-2 focus:ring-primary/20" placeholder="Votre nom" />
+                  <input id="name" name="name" type="text" autoComplete="name" className="h-11 w-full rounded-lg border border-border bg-card px-4 transition-colors focus:border-primary/50 focus:ring-2 focus:ring-primary/20" placeholder="Votre nom" />
                 </div>
                 <div className="space-y-2">
                   <label htmlFor="email" className="text-sm font-bold text-muted-foreground uppercase tracking-widest">Email</label>
-                  <input id="email" type="email" className="h-11 w-full rounded-xl border bg-muted/30 px-4 focus:outline-none focus:ring-2 focus:ring-primary/20" placeholder="votre@email.com" />
+                  <input id="email" name="email" type="email" autoComplete="email" className="h-11 w-full rounded-lg border border-border bg-card px-4 transition-colors focus:border-primary/50 focus:ring-2 focus:ring-primary/20" placeholder="votre@email.com" />
                 </div>
               </div>
               <div className="space-y-2">
                 <label htmlFor="subject" className="text-sm font-bold text-muted-foreground uppercase tracking-widest">Sujet</label>
-                <input id="subject" type="text" className="h-11 w-full rounded-xl border bg-muted/30 px-4 focus:outline-none focus:ring-2 focus:ring-primary/20" placeholder="Sujet de votre message" />
+                <input id="subject" name="subject" type="text" className="h-11 w-full rounded-lg border border-border bg-card px-4 transition-colors focus:border-primary/50 focus:ring-2 focus:ring-primary/20" placeholder="Sujet de votre message" />
               </div>
               <div className="space-y-2">
                 <label htmlFor="message" className="text-sm font-bold text-muted-foreground uppercase tracking-widest">Message</label>
-                <textarea id="message" rows={6} className="w-full rounded-xl border bg-muted/30 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/20 resize-none" placeholder="Votre message..." />
+                <textarea id="message" name="message" rows={6} className="w-full rounded-xl border border-border bg-card px-4 py-3 transition-colors focus:border-primary/50 focus:ring-2 focus:ring-primary/20 resize-none" placeholder="Votre message…" />
               </div>
               <Button size="lg" className="w-full sm:w-auto h-12 px-8 font-bold">
                 Envoyer le message
@@ -52,9 +50,9 @@ export default function ContactPage() {
           </div>
 
           <div className="space-y-6">
-            <div className="p-6 rounded-2xl border bg-white dark:bg-gray-950 flex items-start gap-4">
+            <div className="p-6 rounded-xl border border-border/60 bg-card flex items-start gap-4">
               <div className="h-12 w-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
-                <MessageSquare className="h-6 w-6" />
+                <MessageSquare className="h-6 w-6" aria-hidden="true" />
               </div>
               <div className="min-w-0">
                 <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest mb-1">WhatsApp</p>
@@ -63,9 +61,9 @@ export default function ContactPage() {
               </div>
             </div>
 
-            <div className="p-6 rounded-2xl border bg-white dark:bg-gray-950 flex items-start gap-4">
+            <div className="p-6 rounded-xl border border-border/60 bg-card flex items-start gap-4">
               <div className="h-12 w-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
-                <Mail className="h-6 w-6" />
+                <Mail className="h-6 w-6" aria-hidden="true" />
               </div>
               <div className="min-w-0 break-words">
                 <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest mb-1">Email</p>
@@ -74,9 +72,9 @@ export default function ContactPage() {
               </div>
             </div>
 
-            <div className="p-6 rounded-2xl border bg-white dark:bg-gray-950 flex items-start gap-4">
+            <div className="p-6 rounded-xl border border-border/60 bg-card flex items-start gap-4">
               <div className="h-12 w-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
-                <MapPin className="h-6 w-6" />
+                <MapPin className="h-6 w-6" aria-hidden="true" />
               </div>
               <div className="min-w-0">
                 <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest mb-1">Localisation</p>
@@ -84,9 +82,9 @@ export default function ContactPage() {
               </div>
             </div>
 
-            <div className="p-6 rounded-2xl border bg-white dark:bg-gray-950 flex items-start gap-4">
+            <div className="p-6 rounded-xl border border-border/60 bg-card flex items-start gap-4">
               <div className="h-12 w-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
-                <Clock className="h-6 w-6" />
+                <Clock className="h-6 w-6" aria-hidden="true" />
               </div>
               <div className="min-w-0">
                 <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest mb-1">Disponibilité</p>

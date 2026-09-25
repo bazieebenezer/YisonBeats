@@ -16,9 +16,9 @@ export default function DownloadsPage() {
 
       <div className="grid grid-cols-1 gap-4">
         {purchasedItems.map((item) => (
-          <div key={item.id} className="flex items-center gap-6 p-4 rounded-2xl border bg-white dark:bg-gray-950 transition-all group">
-            <div className="relative h-20 w-20 rounded-xl overflow-hidden shrink-0 border">
-              <Image src={item.coverImage} alt={item.name} fill className="object-cover" />
+          <div key={item.id} className="flex items-center gap-6 p-4 rounded-xl border border-border/60 bg-card  transition-all group">
+            <div className="relative h-20 w-20 rounded-xl overflow-hidden shrink-0 border border-border/60">
+              <Image src={item.coverImage} alt={item.name} fill sizes="80px" className="object-cover" />
             </div>
             
             <div className="flex-1 min-w-0">
@@ -31,16 +31,16 @@ export default function DownloadsPage() {
               
               <div className="mt-4 flex items-center gap-2">
                 <Button variant="secondary" size="sm" className="h-8 text-xs font-bold rounded-lg">
-                  <Play className="mr-2 h-3 w-3 fill-current" /> Écouter
+                  <Play className="mr-2 h-3 w-3 fill-current" aria-hidden="true" /> Écouter
                 </Button>
-                <Button size="sm" className="h-8 text-xs font-bold rounded-lg bg-green-500 hover:bg-green-600 dark:bg-green-600 dark:hover:bg-green-700">
-                  <Download className="mr-2 h-3 w-3" /> Télécharger ({item.size})
+                <Button size="sm" className="h-8 text-xs font-bold rounded-lg bg-green-500 hover:bg-green-600">
+                  <Download className="mr-2 h-3 w-3" aria-hidden="true" /> Télécharger ({item.size})
                 </Button>
               </div>
             </div>
 
             <div className="hidden md:flex flex-col items-end gap-1">
-              <span className="text-[10px] font-bold uppercase tracking-widest text-primary bg-primary/10 px-2 py-0.5 rounded-full">
+              <span className="text-[10px] font-bold uppercase tracking-widest text-primary bg-primary/10 px-2 py-0.5 rounded-lg">
                 {item.licence || "Commercial"}
               </span>
               <p className="text-xs text-muted-foreground mt-1">ID: #{item.id}12345</p>

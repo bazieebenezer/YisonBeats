@@ -12,8 +12,8 @@ export default function AdminServicesPage() {
           <h1 className="text-3xl font-extrabold tracking-tight">Services</h1>
           <p className="text-muted-foreground">Gérez vos services musicaux proposés aux clients.</p>
         </div>
-        <Button className="gap-2">
-          <Plus className="h-4 w-4" /> Ajouter un service
+        <Button className="gap-2 rounded-lg">
+          <Plus className="h-4 w-4" aria-hidden="true" /> Ajouter un service
         </Button>
       </div>
 
@@ -21,12 +21,12 @@ export default function AdminServicesPage() {
         {services.map((service) => {
           const Icon = (Icons as any)[service.icon.charAt(0).toUpperCase() + service.icon.slice(1)] || Icons.Music
           return (
-            <Card key={service.id} className="border-slate-100 dark:border-gray-800 rounded-2xl overflow-hidden group">
+            <Card key={service.id} className="border-border/60  rounded-xl overflow-hidden group">
               <CardContent className="p-6 space-y-4">
                 <div className="flex items-start justify-between">
                   <div className="flex items-center gap-3">
-                    <div className="h-10 w-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
-                      <Icon className="h-5 w-5" />
+                    <div className="h-10 w-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
+                      <Icon className="h-5 w-5" aria-hidden="true" />
                     </div>
                     <div>
                       <h3 className="font-bold">{service.name}</h3>
@@ -34,11 +34,13 @@ export default function AdminServicesPage() {
                     </div>
                   </div>
                   <div className="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <Button variant="ghost" size="icon" className="h-8 w-8">
-                      <Edit2 className="h-4 w-4" />
+                    <Button variant="ghost" size="icon" className="h-8 w-8 rounded-lg"
+                      aria-label={`Modifier ${service.name}`}>
+                      <Edit2 className="h-4 w-4" aria-hidden="true" />
                     </Button>
-                    <Button variant="ghost" size="icon" className="h-8 w-8 text-red-500 dark:text-red-400">
-                      <Trash2 className="h-4 w-4" />
+                    <Button variant="ghost" size="icon" className="h-8 w-8 rounded-lg text-red-500 dark:text-red-400"
+                      aria-label={`Supprimer ${service.name}`}>
+                      <Trash2 className="h-4 w-4" aria-hidden="true" />
                     </Button>
                   </div>
                 </div>

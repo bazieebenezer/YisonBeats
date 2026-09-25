@@ -26,15 +26,26 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = React.useState<Theme>("light")
 
   React.useEffect(() => {
+    const applyTheme = (next: Theme) => {
+      document.documentElement.classList.toggle("dark", next === "dark")
+      const meta = document.querySelector('meta[name="theme-color"]')
+      if (meta) {
+        meta.setAttribute("content", next === "dark" ? "#121212" : "#ffffff")
+      }
+    }
     const initial = getInitialTheme()
     setTheme(initial)
-    document.documentElement.classList.toggle("dark", initial === "dark")
+    applyTheme(initial)
   }, [])
 
   const toggleTheme = React.useCallback(() => {
     setTheme((prev) => {
       const next = prev === "light" ? "dark" : "light"
       document.documentElement.classList.toggle("dark", next === "dark")
+      const meta = document.querySelector('meta[name="theme-color"]')
+      if (meta) {
+        meta.setAttribute("content", next === "dark" ? "#121212" : "#ffffff")
+      }
       try { localStorage.setItem("theme", next) } catch {}
       return next
     })

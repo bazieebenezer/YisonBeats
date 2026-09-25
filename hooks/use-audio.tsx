@@ -157,7 +157,7 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
     }
 
     const onError = () => {
-      // Audio file not available — don't log as error, just note it
+      // Audio file not available - don't log as error, just note it
       console.info("Audio file not available, switching to simulation mode")
     }
 
@@ -259,7 +259,7 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
         setIsPlaying(true)
       })
       .catch(() => {
-        // Audio file not available — start simulation
+        // Audio file not available - start simulation
         const dur = parseDurationString(track.duration)
         startSimulation(dur)
       })

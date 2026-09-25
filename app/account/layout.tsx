@@ -47,26 +47,27 @@ export default function AccountLayout({
                 <Link
                   key={link.href}
                   href={link.href}
+                  aria-current={isActive ? "page" : undefined}
                   className={cn(
-                    "flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-bold transition-all",
+                    "flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-bold transition-all",
                     isActive 
-                      ? "bg-primary text-white" 
-                      : "text-muted-foreground hover:bg-slate-50 dark:hover:bg-gray-800 hover:text-foreground"
+                      ? "bg-primary text-primary-foreground " 
+                      : "text-muted-foreground hover:bg-muted hover:text-foreground"
                   )}
                 >
-                  <Icon className="h-5 w-5" />
+                  <Icon className="h-5 w-5" aria-hidden="true" />
                   {link.name}
                 </Link>
               )
             })}
-            <button className="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-bold text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition-all mt-4">
-              <LogOut className="h-5 w-5" />
+            <button className="flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-bold text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition-all mt-4">
+              <LogOut className="h-5 w-5" aria-hidden="true" />
               Déconnexion
             </button>
           </nav>
 
-          <div className="p-6 rounded-2xl bg-slate-50 dark:bg-gray-900 border flex flex-col items-center text-center gap-4">
-            <ShieldCheck className="h-10 w-10 text-primary" />
+          <div className="p-6 rounded-xl bg-muted/60 border flex flex-col items-center text-center gap-4">
+            <ShieldCheck className="h-10 w-10 text-primary" aria-hidden="true" />
             <p className="text-xs font-medium text-muted-foreground leading-relaxed">
               Votre compte est sécurisé. Toutes vos données sont cryptées.
             </p>

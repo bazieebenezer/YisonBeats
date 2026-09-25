@@ -1,13 +1,18 @@
 "use client"
 
 import * as React from "react"
-import {
-  Play,
-  Pause,
-  X,
-  GripHorizontal
-} from "lucide-react"
+import Image from "next/image"
+import Link from "next/link"
+import { Play, Pause, X, Volume2, Volume1 } from "lucide-react"
 import { useAudio } from "@/hooks/use-audio"
+import { Waveform } from "@/components/ui/waveform"
+
+function fmt(t: number) {
+  if (isNaN(t) || !isFinite(t)) return "0:00"
+  const m = Math.floor(t / 60)
+  const s = Math.floor(t % 60).toString().padStart(2, "0")
+  return `${m}:${s}`
+}
 
 export function GlobalPlayer() {
   const {
@@ -17,65 +22,117 @@ export function GlobalPlayer() {
     stop,
     progress,
     duration,
-    seek
+    seek,
+    volume,
+    setVolume,
   } = useAudio()
-
-  const [pos, setPos] = React.useState({ x: 16, y: 16 })
-  const [dragging, setDragging] = React.useState(false)
-  const dragRef = React.useRef({ startX: 0, startY: 0, elX: 0, elY: 0 })
-
-  // Handle drag movement
-  React.useEffect(() => {
-    if (!dragging) return
-    const onMove = (e: PointerEvent) => setPos({
-      x: Math.max(0, Math.min(window.innerWidth - 300, dragRef.current.elX + e.clientX - dragRef.current.startX)),
-      y: Math.max(0, Math.min(window.innerHeight - 200, dragRef.current.elY + e.clientY - dragRef.current.startY))
-    })
-    const onUp = () => setDragging(false)
-    window.addEventListener("pointermove", onMove)
-    window.addEventListener("pointerup", onUp)
-    return () => { window.removeEventListener("pointermove", onMove); window.removeEventListener("pointerup", onUp) }
-  }, [dragging])
 
   if (!currentTrack) return null
 
-  const fmt = (t: number) => {
-    if (isNaN(t) || !isFinite(t)) return "0:00"
-    return `${Math.floor(t / 60)}:${Math.floor(t % 60).toString().padStart(2, '0')}`
-  }
+  const ratio = duration > 0 ? Math.min(progress / duration, 1) : 0
 
-  const onPointerDown = (e: React.PointerEvent) => {
-    setDragging(true)
-    dragRef.current = { startX: e.clientX, startY: e.clientY, elX: pos.x, elY: pos.y }
-    e.currentTarget.setPointerCapture(e.pointerId)
+  const onWaveformSeek = (r: number) => {
+    seek(r * duration)
   }
 
   return (
-    <div className="fixed z-[100] select-none" style={{ left: pos.x, bottom: pos.y }}>
-      <div className="w-72 rounded-2xl overflow-hidden border border-white/10 bg-black/70 backdrop-blur-2xl">
-        <div className="flex flex-col">
-          <div className="flex items-center justify-between px-3 pt-3">
-            <button onPointerDown={onPointerDown} className="text-white/40 hover:text-white/70 p-1 -ml-1 cursor-grab active:cursor-grabbing"><GripHorizontal className="h-4 w-4" /></button>
-            <button onClick={stop} className="text-white/40 hover:text-white/70 p-1"><X className="h-4 w-4" /></button>
-          </div>
-          <div className="px-4 pb-4 pt-6">
-            <div className="flex items-center gap-3 mb-3">
-              <button onClick={togglePlay} className="h-10 w-10 rounded-full bg-white text-black flex items-center justify-center shrink-0">
-                {isPlaying ? <Pause className="h-4 w-4 fill-current" /> : <Play className="h-4 w-4 fill-current ml-0.5" />}
-              </button>
-              <div className="min-w-0">
-                <p className="text-sm font-semibold text-white truncate">{currentTrack.name}</p>
-                <p className="text-xs text-white/50 truncate">{currentTrack.style}</p>
-              </div>
+    <div className="fixed inset-x-0 bottom-0 z-[100] select-none">
+      <div className="border-t border-border bg-background/95 backdrop-blur-xl">
+        <div className="mx-auto flex max-w-6xl items-center gap-3 px-4 py-2.5 sm:gap-5 sm:px-6">
+          {/* Cover */}
+          <Link
+            href={`/product/${currentTrack.slug}`}
+            className="relative h-12 w-12 shrink-0 overflow-hidden rounded-xl border border-border sm:h-14 sm:w-14"
+            aria-label={`Ouvrir ${currentTrack.name}`}
+          >
+            <Image
+              src={currentTrack.coverImage}
+              alt={currentTrack.name}
+              fill
+              sizes="56px"
+              className="object-cover"
+            />
+          </Link>
+
+          {/* Title + waveform (desktop) */}
+          <div className="min-w-0 flex-1">
+            <div className="flex items-center gap-2">
+              <Link
+                href={`/product/${currentTrack.slug}`}
+                className="truncate text-sm font-semibold hover:text-foreground/70 transition-colors"
+              >
+                {currentTrack.name}
+              </Link>
+              <span className="hidden truncate text-xs text-muted-foreground sm:inline">{currentTrack.style}</span>
             </div>
 
-            <div className="flex items-center gap-2">
-              <div className="relative flex-1 h-1 bg-white/20 rounded-full overflow-hidden">
-                <div className="absolute top-0 left-0 h-full bg-white/90 rounded-full transition-[width] duration-200" style={{ width: `${(progress / (duration || 1)) * 100}%` }} />
-                <input type="range" min="0" max={duration || 0} step="0.1" value={progress} onChange={(e) => seek(parseFloat(e.target.value))} className="absolute inset-0 w-full opacity-0 cursor-pointer" />
+            <div className="mt-1.5 hidden items-center gap-3 md:flex">
+              <div className="h-10 w-full rounded-lg border border-border bg-muted/40 px-2">
+                <Waveform
+                  seed={currentTrack.id}
+                  progress={ratio}
+                  isPlaying={isPlaying}
+                  interactive
+                  onSeek={onWaveformSeek}
+                  activeClass="bg-primary"
+                  inactiveClass="bg-foreground/15"
+                  label="Position de lecture"
+                />
               </div>
-              <span className="text-[10px] text-white/40 tabular-nums">{fmt(progress)} / {fmt(duration)}</span>
+              <span className="shrink-0 text-[11px] text-muted-foreground tabular">{fmt(progress)} / {fmt(duration)}</span>
             </div>
+
+            {/* Mobile progress */}
+            <div className="mt-1.5 flex items-center gap-2 md:hidden">
+              <div className="relative h-1 flex-1 rounded-lg bg-muted overflow-hidden">
+                <div
+                  className="absolute inset-y-0 left-0 rounded-lg bg-foreground"
+                  style={{ width: `${ratio * 100}%` }}
+                />
+              </div>
+              <span className="text-[10px] text-muted-foreground tabular">{fmt(progress)}</span>
+            </div>
+          </div>
+
+          {/* Controls */}
+          <div className="flex shrink-0 items-center gap-1.5 sm:gap-3">
+            <div className="hidden items-center gap-2 lg:flex">
+              {volume > 0 ? (
+                <Volume2 className="h-4 w-4 text-muted-foreground" aria-hidden="true" />
+              ) : (
+                <Volume1 className="h-4 w-4 text-muted-foreground" aria-hidden="true" />
+              )}
+              <input
+                type="range"
+                min="0"
+                max="1"
+                step="0.01"
+                value={volume}
+                onChange={(e) => setVolume(parseFloat(e.target.value))}
+                aria-label="Volume"
+                className="h-1 w-24 cursor-pointer accent-[hsl(var(--primary))]"
+              />
+            </div>
+
+            <button
+              onClick={togglePlay}
+              aria-label={isPlaying ? "Mettre en pause" : "Lecture"}
+              className="flex h-11 w-11 items-center justify-center rounded-full bg-primary text-primary-foreground$ hover:bg-primary/90 transition-colors"
+            >
+              {isPlaying ? (
+                <Pause className="h-5 w-5 fill-current" aria-hidden="true" />
+              ) : (
+                <Play className="ml-0.5 h-5 w-5 fill-current" aria-hidden="true" />
+              )}
+            </button>
+
+            <button
+              onClick={stop}
+              aria-label="Fermer le lecteur"
+              className="flex h-10 w-10 items-center justify-center rounded-lg text-muted-foreground hover:bg-accent hover:text-foreground transition-colors"
+            >
+              <X className="h-5 w-5" aria-hidden="true" />
+            </button>
           </div>
         </div>
       </div>

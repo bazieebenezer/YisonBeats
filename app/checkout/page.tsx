@@ -4,14 +4,16 @@ import * as React from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
-import { 
-  CreditCard, 
-  Wallet, 
-  ShieldCheck, 
-  CheckCircle2, 
+import {
+  CreditCard,
+  Wallet,
+  Smartphone,
+  ShieldCheck,
+  CheckCircle2,
   ChevronLeft,
   Loader2,
-  AlertCircle
+  AlertCircle,
+  type LucideIcon,
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { useCart } from "@/hooks/use-cart"
@@ -19,12 +21,68 @@ import { formatPrice } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 
+type PaymentMethodId = "wave" | "orange" | "mtn" | "card"
+
+const paymentMethods: {
+  id: PaymentMethodId
+  name: string
+  tagline: string
+  icon: LucideIcon
+  color: string
+  needsPhone: boolean
+  phoneLabel: string
+  phonePlaceholder: string
+}[] = [
+  {
+    id: "wave",
+    name: "Wave",
+    tagline: "Mobile money instantané",
+    icon: Wallet,
+    color: "bg-blue-600",
+    needsPhone: true,
+    phoneLabel: "Numéro Wave",
+    phonePlaceholder: "07 00 00 00 00",
+  },
+  {
+    id: "orange",
+    name: "Orange Money",
+    tagline: "Mobile money Orange",
+    icon: Smartphone,
+    color: "bg-orange-500",
+    needsPhone: true,
+    phoneLabel: "Numéro Orange Money",
+    phonePlaceholder: "07 00 00 00 00",
+  },
+  {
+    id: "mtn",
+    name: "MTN MoMo",
+    tagline: "Mobile money MTN",
+    icon: Smartphone,
+    color: "bg-yellow-400 text-black",
+    needsPhone: true,
+    phoneLabel: "Numéro MTN MoMo",
+    phonePlaceholder: "05 00 00 00 00",
+  },
+  {
+    id: "card",
+    name: "Carte bancaire",
+    tagline: "CinetPay / Paystack (Visa, Mastercard)",
+    icon: CreditCard,
+    color: "bg-violet-600",
+    needsPhone: false,
+    phoneLabel: "",
+    phonePlaceholder: "",
+  },
+]
+
 export default function CheckoutPage() {
   const { items, totalPrice, clearCart } = useCart()
   const router = useRouter()
   const [step, setStep] = React.useState<"info" | "payment" | "success">("info")
   const [isProcessing, setIsProcessing] = React.useState(false)
   const [mounted, setMounted] = React.useState(false)
+  const [method, setMethod] = React.useState<PaymentMethodId>("wave")
+  const [phone, setPhone] = React.useState("")
 
   React.useEffect(() => {
     setMounted(true)
@@ -34,6 +92,9 @@ export default function CheckoutPage() {
   }, [items.length, step, router])
 
   if (!mounted) return null
+
+  const activeMethod = paymentMethods.find((m) => m.id === method) ?? paymentMethods[0]
+  const phoneValid = !activeMethod.needsPhone || phone.replace(/\D/g, "").length >= 8
 
   const handlePayment = () => {
     setIsProcessing(true)
@@ -48,8 +109,8 @@ export default function CheckoutPage() {
   if (step === "success") {
     return (
       <div className="container py-20 flex flex-col items-center justify-center text-center space-y-8 animate-in fade-in zoom-in duration-500">
-        <div className="h-24 w-24 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-300">
-          <CheckCircle2 className="h-12 w-12" />
+        <div className="h-24 w-24 rounded-full bg-green-100$ dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-300">
+          <CheckCircle2 className="h-12 w-12" aria-hidden="true" />
         </div>
         <div className="space-y-4 max-w-lg">
           <h1 className="text-4xl font-extrabold tracking-tight">Merci pour votre achat !</h1>
@@ -61,8 +122,8 @@ export default function CheckoutPage() {
           <Button size="lg" className="h-14 px-8 font-bold" asChild>
             <Link href="/account/downloads">Accéder à mes téléchargements</Link>
           </Button>
-          <Button size="lg" variant="outline" className="h-14 px-8 font-bold" asChild>
-            <Link href="/">Retour à l'accueil</Link>
+          <Button size="lg" variant="outline" className="h-14 px-8 font-bold rounded-lg" asChild>
+            <Link href="/">Retour à l&apos;accueil</Link>
           </Button>
         </div>
       </div>
@@ -75,12 +136,12 @@ export default function CheckoutPage() {
         <h1 className="text-3xl font-extrabold tracking-tight">Paiement</h1>
         <div className="flex items-center gap-4">
           <div className={cn("flex items-center gap-2", step === "info" ? "text-primary" : "text-muted-foreground")}>
-            <span className="flex h-6 w-6 items-center justify-center rounded-full border border-current text-xs font-bold">1</span>
+            <span className="flex h-6 w-6 items-center justify-center rounded-full border border-current text-xs font-bold$">1</span>
             <span className="text-sm font-bold">Informations</span>
           </div>
           <div className="h-px w-8 bg-border" />
           <div className={cn("flex items-center gap-2", step === "payment" ? "text-primary" : "text-muted-foreground")}>
-            <span className="flex h-6 w-6 items-center justify-center rounded-full border border-current text-xs font-bold">2</span>
+            <span className="flex h-6 w-6 items-center justify-center rounded-full border border-current text-xs font-bold$">2</span>
             <span className="text-sm font-bold">Paiement</span>
           </div>
         </div>
@@ -93,17 +154,17 @@ export default function CheckoutPage() {
               <h2 className="text-xl font-bold">Vos coordonnées</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <label className="text-sm font-bold text-muted-foreground uppercase tracking-widest">Prénom</label>
-                  <input type="text" className="h-11 w-full rounded-xl border bg-slate-50 dark:bg-gray-900 px-4 focus:outline-none focus:ring-2 focus:ring-primary/20" placeholder="Jean" />
+                  <label htmlFor="prenom" className="text-sm font-bold text-muted-foreground uppercase tracking-widest">Prénom</label>
+                  <input id="prenom" name="prenom" type="text" autoComplete="given-name" className="h-11 w-full rounded-lg border border-border bg-card px-4 transition-colors focus:border-primary/50 focus:ring-2 focus:ring-primary/20" placeholder="Jean" />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-sm font-bold text-muted-foreground uppercase tracking-widest">Nom</label>
-                  <input type="text" className="h-11 w-full rounded-xl border bg-slate-50 dark:bg-gray-900 px-4 focus:outline-none focus:ring-2 focus:ring-primary/20" placeholder="Dupont" />
+                  <label htmlFor="nom" className="text-sm font-bold text-muted-foreground uppercase tracking-widest">Nom</label>
+                  <input id="nom" name="nom" type="text" autoComplete="family-name" className="h-11 w-full rounded-lg border border-border bg-card px-4 transition-colors focus:border-primary/50 focus:ring-2 focus:ring-primary/20" placeholder="Dupont" />
                 </div>
               </div>
               <div className="space-y-2">
-                <label className="text-sm font-bold text-muted-foreground uppercase tracking-widest">Email</label>
-                <input type="email" className="h-11 w-full rounded-xl border bg-slate-50 dark:bg-gray-900 px-4 focus:outline-none focus:ring-2 focus:ring-primary/20" placeholder="jean.dupont@email.com" />
+                <label htmlFor="email" className="text-sm font-bold text-muted-foreground uppercase tracking-widest">Email</label>
+                <input id="email" name="email" type="email" autoComplete="email" className="h-11 w-full rounded-lg border border-border bg-card px-4 transition-colors focus:border-primary/50 focus:ring-2 focus:ring-primary/20" placeholder="jean.dupont@email.com" />
                 <p className="text-xs text-muted-foreground">Vos fichiers seront envoyés à cette adresse.</p>
               </div>
               <Button size="lg" className="w-full h-14 font-bold" onClick={() => setStep("payment")}>
@@ -120,41 +181,74 @@ export default function CheckoutPage() {
 
               <div className="space-y-6">
                 <h2 className="text-xl font-bold">Mode de paiement</h2>
-                
-                <div className="space-y-4">
-                  <div className="relative p-6 rounded-2xl border-2 border-primary bg-primary/5 flex items-center justify-between cursor-pointer">
-                    <div className="flex items-center gap-4">
-                      <div className="h-12 w-12 rounded-full bg-primary flex items-center justify-center text-white">
-                        <Wallet className="h-6 w-6" />
-                      </div>
-                      <div>
-                        <p className="font-bold">Wave</p>
-                        <p className="text-sm text-muted-foreground">Paiement mobile instantané</p>
-                      </div>
-                    </div>
-                    <div className="h-6 w-6 rounded-full border-2 border-primary flex items-center justify-center">
-                      <div className="h-3 w-3 rounded-full bg-primary" />
-                    </div>
-                  </div>
 
-                  <div className="relative p-6 rounded-2xl border bg-slate-50 dark:bg-gray-900 flex items-center justify-between cursor-not-allowed opacity-50">
-                    <div className="flex items-center gap-4">
-                      <div className="h-12 w-12 rounded-full bg-slate-200 dark:bg-gray-700 flex items-center justify-center text-slate-500 dark:text-gray-400">
-                        <CreditCard className="h-6 w-6" />
-                      </div>
-                      <div>
-                        <p className="font-bold">Carte Bancaire</p>
-                        <p className="text-sm text-muted-foreground">Bientôt disponible</p>
-                      </div>
-                    </div>
-                  </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {paymentMethods.map((m) => {
+                    const Icon = m.icon
+                    const isSelected = method === m.id
+                    return (
+                      <button
+                        key={m.id}
+                        type="button"
+                        onClick={() => setMethod(m.id)}
+                        aria-pressed={isSelected}
+                        className={cn(
+                          "relative p-5 rounded-xl border-2 flex items-center gap-4 text-left transition-all",
+                          isSelected
+                            ? "border-primary bg-primary/5"
+                            : "border-transparent bg-muted/50 hover:border-border/80"
+                        )}
+                      >
+                        <div className={cn("h-12 w-12 rounded-xl flex items-center justify-center text-white shrink-0", m.color)}>
+                          <Icon className="h-6 w-6" aria-hidden="true" />
+                        </div>
+                        <div className="min-w-0">
+                          <p className="font-bold">{m.name}</p>
+                          <p className="text-xs text-muted-foreground mt-0.5">{m.tagline}</p>
+                        </div>
+                        <span
+                          className={cn(
+                            "ml-auto h-5 w-5 shrink-0 rounded-full border-2 flex items-center justify-center$",
+                            isSelected ? "border-primary" : "border-border/60"
+                          )}
+                          aria-hidden="true"
+                        >
+                          {isSelected && <span className="h-2.5 w-2.5 rounded-lg bg-primary" />}
+                        </span>
+                      </button>
+                    )
+                  })}
                 </div>
+
+                {activeMethod.needsPhone && (
+                  <div className="space-y-2">
+                    <label htmlFor="payment-phone" className="text-sm font-bold text-muted-foreground uppercase tracking-widest">
+                      {activeMethod.phoneLabel}
+                    </label>
+                    <input
+                      id="payment-phone"
+                      name="phone"
+                      type="tel"
+                      inputMode="tel"
+                      autoComplete="tel-national"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                      placeholder={activeMethod.phonePlaceholder}
+                      className="h-11 w-full rounded-lg border border-border bg-card px-4 transition-colors focus:border-primary/50 focus:ring-2 focus:ring-primary/20"
+                    />
+                    <p className="text-xs text-muted-foreground">
+                      Une demande de paiement sera envoyée à ce numéro via {activeMethod.name}.
+                    </p>
+                  </div>
+                )}
               </div>
 
-              <div className="p-6 rounded-2xl bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800 flex items-start gap-3">
-                <AlertCircle className="h-5 w-5 text-blue-500 dark:text-blue-400 mt-0.5 shrink-0" />
+              <div className="p-6 rounded-xl bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800 flex items-start gap-3">
+                <AlertCircle className="h-5 w-5 text-blue-500 dark:text-blue-400 mt-0.5 shrink-0" aria-hidden="true" />
                 <p className="text-sm text-blue-800 dark:text-blue-300 leading-relaxed">
-                  En cliquant sur "Confirmer le paiement", vous serez redirigé vers l'interface sécurisée de Wave pour finaliser la transaction.
+                  {activeMethod.needsPhone
+                    ? `En cliquant sur "Confirmer le paiement", une invitation de paiement de ${formatPrice(totalPrice)} sera envoyée à votre numéro ${activeMethod.name}. Vous la validerez sur votre téléphone.`
+                    : "En cliquant sur \"Confirmer le paiement\", vous serez redirigé vers la passerelle sécurisée (CinetPay / Paystack) pour finaliser la transaction par carte."}
                 </p>
               </div>
 
@@ -162,37 +256,46 @@ export default function CheckoutPage() {
                 size="lg" 
                 className="w-full h-14 font-bold" 
                 onClick={handlePayment}
-                disabled={isProcessing}
+                disabled={isProcessing || !phoneValid}
               >
                 {isProcessing ? (
                   <>
-                    <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                    Traitement en cours...
+                    <Loader2 className="mr-2 h-5 w-5 animate-spin" aria-hidden="true" />
+                    Traitement en cours…
                   </>
                 ) : (
-                  `Payer ${formatPrice(totalPrice)} via Wave`
+                  `Payer ${formatPrice(totalPrice)} via ${activeMethod.name}`
                 )}
               </Button>
+
+              {!phoneValid && (
+                <p className="text-center text-xs text-destructive">
+                  Saisissez un numéro de téléphone valide (8 chiffres minimum).
+                </p>
+              )}
             </div>
           )}
         </div>
 
         {/* Order Summary */}
         <div className="lg:col-span-5">
-          <Card className="rounded-[2rem] border-2 border-slate-100 dark:border-gray-800 overflow-hidden">
+          <Card className="rounded-xl border border-border  overflow-hidden">
             <CardContent className="p-8 space-y-6">
               <h2 className="text-xl font-bold">Votre commande</h2>
-              <div className="space-y-4 max-h-60 overflow-y-auto pr-2 no-scrollbar">
+              <div className="space-y-4 max-h-60 overflow-y-auto pr-2 no-scrollbar overscroll-contain">
                 {items.map((item) => (
                   <div key={item.id} className="flex items-center gap-3">
-                    <div className="relative h-12 w-12 rounded-lg overflow-hidden shrink-0 border">
-                      <Image src={item.coverImage} alt={item.name} fill className="object-cover" />
+                    <div className="relative h-12 w-12 rounded-xl overflow-hidden shrink-0 border border-border/60">
+                      <Image src={item.coverImage} alt={item.name} fill sizes="48px" className="object-cover" />
                     </div>
                     <div className="flex-1 min-w-0">
                       <p className="text-sm font-bold truncate">{item.name}</p>
-                      <p className="text-xs text-muted-foreground">{item.type}</p>
+                      <p className="text-xs text-muted-foreground">
+                        {item.type}
+                        {item.license && <span className="text-primary font-semibold"> - {item.license.name}</span>}
+                      </p>
                     </div>
-                    <p className="text-sm font-bold">{formatPrice(item.price)}</p>
+                    <p className="text-sm font-bold tabular">{formatPrice(item.license?.price ?? item.price)}</p>
                   </div>
                 ))}
               </div>
@@ -200,17 +303,17 @@ export default function CheckoutPage() {
               <div className="border-t pt-4 space-y-2">
                 <div className="flex justify-between text-sm">
                   <span className="text-muted-foreground">Sous-total</span>
-                  <span className="font-bold">{formatPrice(totalPrice)}</span>
+                  <span className="font-bold tabular">{formatPrice(totalPrice)}</span>
                 </div>
                 <div className="flex justify-between border-t pt-2 mt-2">
                   <span className="font-bold">Total</span>
-                  <span className="text-xl font-extrabold text-primary">{formatPrice(totalPrice)}</span>
+                  <span className="text-xl font-extrabold text-primary tabular">{formatPrice(totalPrice)}</span>
                 </div>
               </div>
 
               <div className="pt-4 flex items-center justify-center gap-2 text-xs text-muted-foreground">
-                <ShieldCheck className="h-4 w-4 text-green-500 dark:text-green-400" />
-                Paiement crypté & sécurisé
+                <ShieldCheck className="h-4 w-4 text-green-500 dark:text-green-400" aria-hidden="true" />
+                Paiement crypté &amp; sécurisé
               </div>
             </CardContent>
           </Card>
@@ -219,5 +322,3 @@ export default function CheckoutPage() {
     </div>
   )
 }
-
-

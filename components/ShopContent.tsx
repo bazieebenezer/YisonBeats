@@ -41,11 +41,13 @@ export default function ShopContent() {
       {/* Search and Quick Filters */}
       <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
         <div className="relative w-full md:w-96">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" aria-hidden="true" />
           <input
             type="text"
-            placeholder="Rechercher un beat, un style..."
-            className="h-11 w-full rounded-xl border bg-muted/30 pl-10 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all"
+            name="recherche"
+            aria-label="Rechercher un beat, un style"
+            placeholder="Rechercher un beat, un style…"
+            className="h-11 w-full rounded-lg border border-border bg-muted/50 pl-10 pr-4 text-sm transition-colors focus:border-primary/50 focus:ring-2 focus:ring-primary/20"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
@@ -56,7 +58,8 @@ export default function ShopContent() {
             variant={priceFilter === "all" ? "default" : "outline"} 
             size="sm" 
             onClick={() => setPriceFilter("all")}
-            className="rounded-full"
+            className="shrink-0 rounded-lg"
+            aria-pressed={priceFilter === "all"}
           >
             Tous
           </Button>
@@ -64,7 +67,8 @@ export default function ShopContent() {
             variant={priceFilter === "free" ? "default" : "outline"} 
             size="sm" 
             onClick={() => setPriceFilter("free")}
-            className="rounded-full"
+            className="shrink-0 rounded-lg"
+            aria-pressed={priceFilter === "free"}
           >
             Gratuits
           </Button>
@@ -72,7 +76,8 @@ export default function ShopContent() {
             variant={priceFilter === "paid" ? "default" : "outline"} 
             size="sm" 
             onClick={() => setPriceFilter("paid")}
-            className="rounded-full"
+            className="shrink-0 rounded-lg"
+            aria-pressed={priceFilter === "paid"}
           >
             Payants
           </Button>
@@ -80,13 +85,14 @@ export default function ShopContent() {
           <Button 
             variant="outline" 
             size="sm" 
-            className="rounded-full"
+            className="shrink-0 rounded-lg"
             onClick={() => setIsFilterOpen(!isFilterOpen)}
+            aria-expanded={isFilterOpen}
           >
-            <SlidersHorizontal className="mr-2 h-4 w-4" />
+            <SlidersHorizontal className="mr-2 h-4 w-4" aria-hidden="true" />
             Filtres
             {(selectedType || selectedStyle) && (
-              <span className="ml-2 flex h-4 w-4 items-center justify-center rounded-full bg-primary text-[10px] text-white">
+              <span className="ml-2 flex h-4 w-4 items-center justify-center rounded-lg bg-primary text-[10px] text-primary-foreground">
                 {(selectedType ? 1 : 0) + (selectedStyle ? 1 : 0)}
               </span>
             )}
@@ -96,7 +102,7 @@ export default function ShopContent() {
 
       {/* Expanded Filters */}
       {isFilterOpen && (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 p-6 bg-muted/30 rounded-2xl border animate-in fade-in slide-in-from-top-4 duration-300">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 p-6 bg-muted/50 rounded-xl border animate-in fade-in slide-in-from-top-4 duration-300">
           <div className="space-y-4">
             <h3 className="font-bold text-sm uppercase tracking-widest text-muted-foreground">Type de produit</h3>
             <div className="flex flex-wrap gap-2">
@@ -104,11 +110,12 @@ export default function ShopContent() {
                 <button
                   key={cat.id}
                   onClick={() => setSelectedType(selectedType === cat.name ? null : cat.name)}
+                  aria-pressed={selectedType === cat.name}
                   className={cn(
                     "px-3 py-1.5 rounded-lg text-xs font-medium border transition-all",
                     selectedType === cat.name 
-                      ? "bg-primary border-primary text-white" 
-                      : "bg-white dark:bg-gray-900 border-border hover:border-primary/50"
+                      ? "bg-primary border-primary text-primary-foreground" 
+                      : "bg-card border-border hover:border-primary/50"
                   )}
                 >
                   {cat.name}
@@ -124,11 +131,12 @@ export default function ShopContent() {
                 <button
                   key={style}
                   onClick={() => setSelectedStyle(selectedStyle === style ? null : style)}
+                  aria-pressed={selectedStyle === style}
                   className={cn(
                     "px-3 py-1.5 rounded-lg text-xs font-medium border transition-all",
                     selectedStyle === style 
-                      ? "bg-primary border-primary text-white" 
-                      : "bg-white dark:bg-gray-900 border-border hover:border-primary/50"
+                      ? "bg-primary border-primary text-primary-foreground" 
+                      : "bg-card border-border hover:border-primary/50"
                   )}
                 >
                   {style}
@@ -163,8 +171,8 @@ export default function ShopContent() {
             Affichage de <span className="font-bold text-foreground">{filteredProducts.length}</span> produits
           </p>
           <div className="flex items-center gap-2 text-sm font-medium cursor-pointer hover:text-primary">
-            Trier par: <span className="text-primary font-bold">Nouveautés</span>
-            <ChevronDown className="h-4 w-4" />
+            Trier par&nbsp;: <span className="text-primary font-bold">Nouveautés</span>
+            <ChevronDown className="h-4 w-4" aria-hidden="true" />
           </div>
         </div>
 
@@ -176,8 +184,8 @@ export default function ShopContent() {
           </div>
         ) : (
           <div className="flex flex-col items-center justify-center py-20 space-y-4">
-            <div className="h-20 w-20 rounded-full bg-muted flex items-center justify-center">
-              <Search className="h-10 w-10 text-muted-foreground/50" />
+            <div className="h-20 w-20 rounded-lg bg-muted flex items-center justify-center">
+              <Search className="h-10 w-10 text-muted-foreground/50" aria-hidden="true" />
             </div>
             <p className="text-xl font-bold">Aucun produit trouvé</p>
             <p className="text-muted-foreground">Essayez de modifier vos filtres ou votre recherche.</p>
