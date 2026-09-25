@@ -26,7 +26,7 @@ export default function OrdersPage() {
                   <div className="flex items-center gap-3">
                     <p className="font-bold text-primary">{order.id}</p>
                     <span className={`px-2 py-0.5 rounded-lg text-[10px] font-bold uppercase tracking-widest ${
-                      order.status === "Payée" ? "bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-300" : "bg-yellow-100 text-yellow-600 dark:bg-yellow-900/30 dark:text-yellow-300"
+                      order.status === "Payée" ? "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300" : "bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
                     }`}>
                       {order.status}
                     </span>

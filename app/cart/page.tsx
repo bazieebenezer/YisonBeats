@@ -121,7 +121,7 @@ export default function CartPage() {
                 name="code"
                 autoComplete="off"
                 placeholder="Entrez votre code"
-                className="flex-1 bg-card border border-border rounded-lg px-4 py-2 text-sm transition-colors focus:border-primary/50 focus:ring-2 focus:ring-primary/20"
+                className="flex-1 bg-card border border-border rounded-lg px-4 py-2 text-sm transition-colors focus:border-primary/50 focus:ring-2 focus:ring-primary/20 placeholder:text-muted-foreground"
               />
               <Button size="sm" className="rounded-lg">Appliquer</Button>
             </form>

@@ -29,31 +29,31 @@ export default function ProfilePage() {
               <label htmlFor="prenom" className="text-sm font-bold text-muted-foreground uppercase tracking-widest flex items-center gap-2">
                 <User className="h-4 w-4" aria-hidden="true" /> Prénom
               </label>
-              <input id="prenom" name="prenom" type="text" autoComplete="given-name" className="h-11 w-full rounded-lg border border-border bg-muted/50 px-4 transition-colors focus:border-primary/50 focus:ring-2 focus:ring-primary/20" defaultValue="Josias" />
+              <input id="prenom" name="prenom" type="text" autoComplete="given-name" className="h-11 w-full rounded-lg border border-border bg-muted/50 px-4 transition-colors focus:border-primary/50 focus:ring-2 focus:ring-primary/20 placeholder:text-muted-foreground" defaultValue="Josias" />
             </div>
             <div className="space-y-2">
               <label htmlFor="nom" className="text-sm font-bold text-muted-foreground uppercase tracking-widest flex items-center gap-2">
                 <User className="h-4 w-4" aria-hidden="true" /> Nom
               </label>
-              <input id="nom" name="nom" type="text" autoComplete="family-name" className="h-11 w-full rounded-lg border border-border bg-muted/50 px-4 transition-colors focus:border-primary/50 focus:ring-2 focus:ring-primary/20" defaultValue="Bazie" />
+              <input id="nom" name="nom" type="text" autoComplete="family-name" className="h-11 w-full rounded-lg border border-border bg-muted/50 px-4 transition-colors focus:border-primary/50 focus:ring-2 focus:ring-primary/20 placeholder:text-muted-foreground" defaultValue="Bazie" />
             </div>
             <div className="space-y-2">
               <label htmlFor="email" className="text-sm font-bold text-muted-foreground uppercase tracking-widest flex items-center gap-2">
                 <Mail className="h-4 w-4" aria-hidden="true" /> Email
               </label>
-              <input id="email" name="email" type="email" autoComplete="email" className="h-11 w-full rounded-lg border border-border bg-muted/50 px-4 transition-colors focus:border-primary/50 focus:ring-2 focus:ring-primary/20" defaultValue="josias@yisonbits.com" />
+              <input id="email" name="email" type="email" autoComplete="email" className="h-11 w-full rounded-lg border border-border bg-muted/50 px-4 transition-colors focus:border-primary/50 focus:ring-2 focus:ring-primary/20 placeholder:text-muted-foreground" defaultValue="josias@yisonbits.com" />
             </div>
             <div className="space-y-2">
               <label htmlFor="telephone" className="text-sm font-bold text-muted-foreground uppercase tracking-widest flex items-center gap-2">
                 <Phone className="h-4 w-4" aria-hidden="true" /> Téléphone
               </label>
-              <input id="telephone" name="telephone" type="tel" autoComplete="tel" className="h-11 w-full rounded-lg border border-border bg-muted/50 px-4 transition-colors focus:border-primary/50 focus:ring-2 focus:ring-primary/20" defaultValue="+226 00 00 00 00" />
+              <input id="telephone" name="telephone" type="tel" autoComplete="tel" className="h-11 w-full rounded-lg border border-border bg-muted/50 px-4 transition-colors focus:border-primary/50 focus:ring-2 focus:ring-primary/20 placeholder:text-muted-foreground" defaultValue="+226 00 00 00 00" />
             </div>
             <div className="space-y-2 md:col-span-2">
               <label htmlFor="localisation" className="text-sm font-bold text-muted-foreground uppercase tracking-widest flex items-center gap-2">
                 <MapPin className="h-4 w-4" aria-hidden="true" /> Localisation
               </label>
-              <input id="localisation" name="localisation" type="text" className="h-11 w-full rounded-lg border border-border bg-muted/50 px-4 transition-colors focus:border-primary/50 focus:ring-2 focus:ring-primary/20" defaultValue="Ouagadougou, Burkina Faso" />
+              <input id="localisation" name="localisation" type="text" className="h-11 w-full rounded-lg border border-border bg-muted/50 px-4 transition-colors focus:border-primary/50 focus:ring-2 focus:ring-primary/20 placeholder:text-muted-foreground" defaultValue="Ouagadougou, Burkina Faso" />
             </div>
           </div>
           <div className="pt-4 border-t">

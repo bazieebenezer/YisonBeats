@@ -38,7 +38,7 @@ const paymentMethods: {
     name: "Wave",
     tagline: "Mobile money instantané",
     icon: Wallet,
-    color: "bg-blue-600",
+    color: "bg-blue-600 text-white",
     needsPhone: true,
     phoneLabel: "Numéro Wave",
     phonePlaceholder: "07 00 00 00 00",
@@ -48,7 +48,7 @@ const paymentMethods: {
     name: "Orange Money",
     tagline: "Mobile money Orange",
     icon: Smartphone,
-    color: "bg-orange-500",
+    color: "bg-orange-500 text-white",
     needsPhone: true,
     phoneLabel: "Numéro Orange Money",
     phonePlaceholder: "07 00 00 00 00",
@@ -58,7 +58,7 @@ const paymentMethods: {
     name: "MTN MoMo",
     tagline: "Mobile money MTN",
     icon: Smartphone,
-    color: "bg-yellow-400 text-black",
+    color: "bg-yellow-400 text-yellow-950",
     needsPhone: true,
     phoneLabel: "Numéro MTN MoMo",
     phonePlaceholder: "05 00 00 00 00",
@@ -68,7 +68,7 @@ const paymentMethods: {
     name: "Carte bancaire",
     tagline: "CinetPay / Paystack (Visa, Mastercard)",
     icon: CreditCard,
-    color: "bg-violet-600",
+    color: "bg-violet-600 text-white",
     needsPhone: false,
     phoneLabel: "",
     phonePlaceholder: "",
@@ -155,16 +155,16 @@ export default function CheckoutPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <label htmlFor="prenom" className="text-sm font-bold text-muted-foreground uppercase tracking-widest">Prénom</label>
-                  <input id="prenom" name="prenom" type="text" autoComplete="given-name" className="h-11 w-full rounded-lg border border-border bg-card px-4 transition-colors focus:border-primary/50 focus:ring-2 focus:ring-primary/20" placeholder="Jean" />
+                  <input id="prenom" name="prenom" type="text" autoComplete="given-name" className="h-11 w-full rounded-lg border border-border bg-card px-4 transition-colors focus:border-primary/50 focus:ring-2 focus:ring-primary/20 placeholder:text-muted-foreground" placeholder="Jean" />
                 </div>
                 <div className="space-y-2">
                   <label htmlFor="nom" className="text-sm font-bold text-muted-foreground uppercase tracking-widest">Nom</label>
-                  <input id="nom" name="nom" type="text" autoComplete="family-name" className="h-11 w-full rounded-lg border border-border bg-card px-4 transition-colors focus:border-primary/50 focus:ring-2 focus:ring-primary/20" placeholder="Dupont" />
+                  <input id="nom" name="nom" type="text" autoComplete="family-name" className="h-11 w-full rounded-lg border border-border bg-card px-4 transition-colors focus:border-primary/50 focus:ring-2 focus:ring-primary/20 placeholder:text-muted-foreground" placeholder="Dupont" />
                 </div>
               </div>
               <div className="space-y-2">
                 <label htmlFor="email" className="text-sm font-bold text-muted-foreground uppercase tracking-widest">Email</label>
-                <input id="email" name="email" type="email" autoComplete="email" className="h-11 w-full rounded-lg border border-border bg-card px-4 transition-colors focus:border-primary/50 focus:ring-2 focus:ring-primary/20" placeholder="jean.dupont@email.com" />
+                <input id="email" name="email" type="email" autoComplete="email" className="h-11 w-full rounded-lg border border-border bg-card px-4 transition-colors focus:border-primary/50 focus:ring-2 focus:ring-primary/20 placeholder:text-muted-foreground" placeholder="jean.dupont@email.com" />
                 <p className="text-xs text-muted-foreground">Vos fichiers seront envoyés à cette adresse.</p>
               </div>
               <Button size="lg" className="w-full h-14 font-bold" onClick={() => setStep("payment")}>
@@ -199,7 +199,7 @@ export default function CheckoutPage() {
                             : "border-transparent bg-muted/50 hover:border-border/80"
                         )}
                       >
-                        <div className={cn("h-12 w-12 rounded-xl flex items-center justify-center text-white shrink-0", m.color)}>
+                        <div className={cn("h-12 w-12 rounded-xl flex items-center justify-center shrink-0", m.color)}>
                           <Icon className="h-6 w-6" aria-hidden="true" />
                         </div>
                         <div className="min-w-0">

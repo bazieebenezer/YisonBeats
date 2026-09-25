@@ -26,7 +26,7 @@ export default function AdminProductsPage() {
               type="text"
               aria-label="Filtrer les produits"
               placeholder="Filtrer les produits…"
-              className="h-9 w-full rounded-lg border border-border bg-muted/60 pl-10 pr-4 text-xs transition-colors focus:border-primary/50 focus:ring-2 focus:ring-primary/20"
+              className="h-9 w-full rounded-lg border border-border bg-muted/60 pl-10 pr-4 text-xs transition-colors focus:border-primary/50 focus:ring-2 focus:ring-primary/20 placeholder:text-muted-foreground"
             />
           </div>
           <div className="flex items-center gap-2">

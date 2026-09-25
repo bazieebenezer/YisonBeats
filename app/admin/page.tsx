@@ -74,7 +74,7 @@ export default function AdminDashboard() {
                       <td className="px-6 py-4">
                         <span className={cn(
                           "px-2 py-1 rounded-lg text-[10px] font-bold uppercase tracking-widest",
-                          order.status === "Payé" ? "bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-300" : "bg-yellow-100 text-yellow-600 dark:bg-yellow-900/30 dark:text-yellow-300"
+                          order.status === "Payé" ? "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300" : "bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300"
                         )}>
                           {order.status}
                         </span>

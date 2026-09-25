@@ -47,7 +47,7 @@ export default function ShopContent() {
             name="recherche"
             aria-label="Rechercher un beat, un style"
             placeholder="Rechercher un beat, un style…"
-            className="h-11 w-full rounded-lg border border-border bg-muted/50 pl-10 pr-4 text-sm transition-colors focus:border-primary/50 focus:ring-2 focus:ring-primary/20"
+            className="h-11 w-full rounded-lg border border-border bg-muted/50 pl-10 pr-4 text-sm transition-colors focus:border-primary/50 focus:ring-2 focus:ring-primary/20 placeholder:text-muted-foreground"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />

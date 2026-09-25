@@ -83,7 +83,7 @@ export function Header() {
               placeholder="Rechercher un beat…"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="h-9 w-64 rounded-lg border border-border bg-muted/40 pl-9 pr-4 text-sm transition-colors focus:border-foreground/40 focus:ring-2 focus:ring-ring/20"
+              className="h-9 w-64 rounded-lg border border-border bg-muted/40 pl-9 pr-4 text-sm transition-colors focus:border-foreground/40 focus:ring-2 focus:ring-ring/20 placeholder:text-muted-foreground"
             />
           </form>
 
@@ -153,7 +153,7 @@ export function Header() {
                   placeholder="Rechercher…"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="h-10 w-full rounded-lg border border-border bg-muted/40 pl-9 pr-4 text-sm focus:border-foreground/40 focus:ring-2 focus:ring-ring/20"
+                  className="h-10 w-full rounded-lg border border-border bg-muted/40 pl-9 pr-4 text-sm focus:border-foreground/40 focus:ring-2 focus:ring-ring/20 placeholder:text-muted-foreground"
                 />
               </form>
             </div>

@@ -70,7 +70,7 @@ export function Footer() {
                 name="email"
                 autoComplete="email"
                 placeholder="Votre email"
-                className="w-full rounded-lg border border-border bg-muted/40 px-4 py-2.5 text-sm transition-colors focus:border-foreground/40 focus:ring-2 focus:ring-ring/20"
+                className="w-full rounded-lg border border-border bg-muted/40 px-4 py-2.5 text-sm transition-colors focus:border-foreground/40 focus:ring-2 focus:ring-ring/20 placeholder:text-muted-foreground"
               />
               <button type="submit" aria-label="S'inscrire à la newsletter" className="shrink-0 rounded-lg bg-primary p-2.5 text-primary-foreground transition-colors hover:bg-primary/90">
                 <Mail className="h-5 w-5" aria-hidden="true" />

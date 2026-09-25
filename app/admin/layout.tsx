@@ -84,7 +84,7 @@ export default function AdminLayout({
               type="text"
               aria-label="Rechercher une commande, un produit"
               placeholder="Rechercher une commande, un produit…"
-              className="h-9 w-full rounded-lg border-none bg-muted pl-10 pr-4 text-xs focus:ring-2 focus:ring-primary/30"
+              className="h-9 w-full rounded-lg border-none bg-muted pl-10 pr-4 text-xs focus:ring-2 focus:ring-primary/30 placeholder:text-muted-foreground"
             />
           </div>
 

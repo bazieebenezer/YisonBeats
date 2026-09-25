@@ -28,20 +28,20 @@ export default function ContactPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <label htmlFor="name" className="text-sm font-bold text-muted-foreground uppercase tracking-widest">Nom</label>
-                  <input id="name" name="name" type="text" autoComplete="name" className="h-11 w-full rounded-lg border border-border bg-card px-4 transition-colors focus:border-primary/50 focus:ring-2 focus:ring-primary/20" placeholder="Votre nom" />
+                  <input id="name" name="name" type="text" autoComplete="name" className="h-11 w-full rounded-lg border border-border bg-card px-4 transition-colors focus:border-primary/50 focus:ring-2 focus:ring-primary/20 placeholder:text-muted-foreground" placeholder="Votre nom" />
                 </div>
                 <div className="space-y-2">
                   <label htmlFor="email" className="text-sm font-bold text-muted-foreground uppercase tracking-widest">Email</label>
-                  <input id="email" name="email" type="email" autoComplete="email" className="h-11 w-full rounded-lg border border-border bg-card px-4 transition-colors focus:border-primary/50 focus:ring-2 focus:ring-primary/20" placeholder="votre@email.com" />
+                  <input id="email" name="email" type="email" autoComplete="email" className="h-11 w-full rounded-lg border border-border bg-card px-4 transition-colors focus:border-primary/50 focus:ring-2 focus:ring-primary/20 placeholder:text-muted-foreground" placeholder="votre@email.com" />
                 </div>
               </div>
               <div className="space-y-2">
                 <label htmlFor="subject" className="text-sm font-bold text-muted-foreground uppercase tracking-widest">Sujet</label>
-                <input id="subject" name="subject" type="text" className="h-11 w-full rounded-lg border border-border bg-card px-4 transition-colors focus:border-primary/50 focus:ring-2 focus:ring-primary/20" placeholder="Sujet de votre message" />
+                <input id="subject" name="subject" type="text" className="h-11 w-full rounded-lg border border-border bg-card px-4 transition-colors focus:border-primary/50 focus:ring-2 focus:ring-primary/20 placeholder:text-muted-foreground" placeholder="Sujet de votre message" />
               </div>
               <div className="space-y-2">
                 <label htmlFor="message" className="text-sm font-bold text-muted-foreground uppercase tracking-widest">Message</label>
-                <textarea id="message" name="message" rows={6} className="w-full rounded-xl border border-border bg-card px-4 py-3 transition-colors focus:border-primary/50 focus:ring-2 focus:ring-primary/20 resize-none" placeholder="Votre message…" />
+                <textarea id="message" name="message" rows={6} className="w-full rounded-xl border border-border bg-card px-4 py-3 transition-colors focus:border-primary/50 focus:ring-2 focus:ring-primary/20 resize-none placeholder:text-muted-foreground" placeholder="Votre message…" />
               </div>
               <Button size="lg" className="w-full sm:w-auto h-12 px-8 font-bold">
                 Envoyer le message

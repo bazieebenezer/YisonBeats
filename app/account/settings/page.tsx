@@ -24,7 +24,7 @@ export default function SettingsPage() {
             <div className="space-y-4 ml-14">
               {["Nouveaux beats", "Offres promotionnelles", "Confirmations de commande", "Newsletter"].map((item) => (
                 <label key={item} className="flex items-center gap-3 cursor-pointer">
-                  <input type="checkbox" defaultChecked className="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary" />
+                  <input type="checkbox" defaultChecked className="h-4 w-4 rounded border-border text-primary focus:ring-primary placeholder:text-muted-foreground" />
                   <span className="text-sm font-medium">{item}</span>
                 </label>
               ))}
@@ -42,13 +42,13 @@ export default function SettingsPage() {
               <div className="space-y-2">
                 <label htmlFor="mot-de-passe-actuel" className="text-sm font-bold text-muted-foreground uppercase tracking-widest">Mot de passe actuel</label>
                 <div className="relative">
-                  <input id="mot-de-passe-actuel" name="mot-de-passe-actuel" type="password" className="h-11 w-full rounded-lg border border-border bg-muted/50 px-4 pr-10 transition-colors focus:border-primary/50 focus:ring-2 focus:ring-primary/20" placeholder="********" />
+                  <input id="mot-de-passe-actuel" name="mot-de-passe-actuel" type="password" className="h-11 w-full rounded-lg border border-border bg-muted/50 px-4 pr-10 transition-colors focus:border-primary/50 focus:ring-2 focus:ring-primary/20 placeholder:text-muted-foreground" placeholder="********" />
                   <EyeOff className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground cursor-pointer" aria-hidden="true" />
                 </div>
               </div>
               <div className="space-y-2">
                 <label htmlFor="nouveau-mot-de-passe" className="text-sm font-bold text-muted-foreground uppercase tracking-widest">Nouveau mot de passe</label>
-                <input id="nouveau-mot-de-passe" name="nouveau-mot-de-passe" type="password" className="h-11 w-full rounded-lg border border-border bg-muted/50 px-4 transition-colors focus:border-primary/50 focus:ring-2 focus:ring-primary/20" placeholder="Nouveau mot de passe" />
+                <input id="nouveau-mot-de-passe" name="nouveau-mot-de-passe" type="password" className="h-11 w-full rounded-lg border border-border bg-muted/50 px-4 transition-colors focus:border-primary/50 focus:ring-2 focus:ring-primary/20 placeholder:text-muted-foreground" placeholder="Nouveau mot de passe" />
               </div>
               <Button variant="outline" size="sm" className="rounded-lg">Mettre à jour le mot de passe</Button>
             </div>
