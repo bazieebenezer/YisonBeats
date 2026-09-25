@@ -58,7 +58,7 @@ export default function AdminSettingsPage() {
                   <div>
                     <p className="font-bold text-sm">{m.name}</p>
                     <p className="text-xs text-muted-foreground mt-1">{m.info}</p>
-                    <p className="text-xs text-muted-foreground">Statut : <span className="text-green-500 dark:text-green-400 font-bold">Connecté</span></p>
+                    <p className="text-xs text-muted-foreground">Statut : <span className="text-green-700 dark:text-green-400 font-bold">Connecté</span></p>
                   </div>
                 </div>
               ))}

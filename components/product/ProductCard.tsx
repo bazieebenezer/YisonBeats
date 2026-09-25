@@ -64,7 +64,7 @@ export function ProductCard({ product }: ProductCardProps) {
 
       <div className="mt-4 space-y-1">
         <div className="flex items-center justify-between">
-          <Link href={`/product/${product.slug}`} className="hover:text-foreground/70 transition-colors">
+          <Link href={`/product/${product.slug}`} className="hover:text-foreground transition-colors">
             <h3 className="font-display text-base font-semibold leading-tight">{product.name}</h3>
           </Link>
           <span className="text-xs text-muted-foreground">{product.style}</span>

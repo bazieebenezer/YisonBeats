@@ -59,7 +59,7 @@ export function GlobalPlayer() {
             <div className="flex items-center gap-2">
               <Link
                 href={`/product/${currentTrack.slug}`}
-                className="truncate text-sm font-semibold hover:text-foreground/70 transition-colors"
+                className="truncate text-sm font-semibold hover:text-foreground transition-colors"
               >
                 {currentTrack.name}
               </Link>
