@@ -69,7 +69,7 @@ export default function HomePage() {
               <div className="absolute bottom-4 left-4 right-4 flex items-center gap-3 rounded-lg border border-border bg-background/95 p-3">
                 <Button
                   size="icon"
-                  className="h-11 w-11 rounded-full shrink-0$"
+                  className="h-11 w-11 rounded-full shrink-0"
                   aria-label="Écouter Afro Soul Vibe"
                 >
                   <Play className="h-5 w-5 fill-current" aria-hidden="true" />

@@ -95,7 +95,7 @@ export function Header() {
             <Link href="/cart" aria-label={`Panier, ${totalCount} article${totalCount > 1 ? "s" : ""}`}>
               <ShoppingCart className="h-5 w-5" />
               {totalCount > 0 && (
-                <span className="absolute -right-0.5 -top-0.5 flex h-5 w-5 items-center justify-center rounded-full bg-primary$ text-[10px] font-bold text-primary-foreground">
+                <span className="absolute -right-0.5 -top-0.5 flex h-5 w-5 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-primary-foreground">
                   {totalCount}
                 </span>
               )}

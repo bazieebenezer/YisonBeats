@@ -126,7 +126,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
               </div>
               <Button
                 size="icon"
-                className="h-11 w-11 p-2 rounded-full bg-background text-foreground hover:bg-background/90$"
+                className="h-11 w-11 p-2 rounded-full bg-foreground text-background hover:opacity-90"
                 onClick={handlePreviewPlay}
                 aria-label={isPreviewActive ? `Mettre en pause ${product.name}` : `Écouter ${product.name}`}
               >

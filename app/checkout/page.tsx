@@ -109,7 +109,7 @@ export default function CheckoutPage() {
   if (step === "success") {
     return (
       <div className="container py-20 flex flex-col items-center justify-center text-center space-y-8 animate-in fade-in zoom-in duration-500">
-        <div className="h-24 w-24 rounded-full bg-green-100$ dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-300">
+        <div className="h-24 w-24 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-300">
           <CheckCircle2 className="h-12 w-12" aria-hidden="true" />
         </div>
         <div className="space-y-4 max-w-lg">
@@ -136,12 +136,12 @@ export default function CheckoutPage() {
         <h1 className="text-3xl font-extrabold tracking-tight">Paiement</h1>
         <div className="flex items-center gap-4">
           <div className={cn("flex items-center gap-2", step === "info" ? "text-primary" : "text-muted-foreground")}>
-            <span className="flex h-6 w-6 items-center justify-center rounded-full border border-current text-xs font-bold$">1</span>
+            <span className="flex h-6 w-6 items-center justify-center rounded-full border border-current text-xs font-bold">1</span>
             <span className="text-sm font-bold">Informations</span>
           </div>
           <div className="h-px w-8 bg-border" />
           <div className={cn("flex items-center gap-2", step === "payment" ? "text-primary" : "text-muted-foreground")}>
-            <span className="flex h-6 w-6 items-center justify-center rounded-full border border-current text-xs font-bold$">2</span>
+            <span className="flex h-6 w-6 items-center justify-center rounded-full border border-current text-xs font-bold">2</span>
             <span className="text-sm font-bold">Paiement</span>
           </div>
         </div>
@@ -208,7 +208,7 @@ export default function CheckoutPage() {
                         </div>
                         <span
                           className={cn(
-                            "ml-auto h-5 w-5 shrink-0 rounded-full border-2 flex items-center justify-center$",
+                            "ml-auto h-5 w-5 shrink-0 rounded-full border-2 flex items-center justify-center",
                             isSelected ? "border-primary" : "border-border/60"
                           )}
                           aria-hidden="true"

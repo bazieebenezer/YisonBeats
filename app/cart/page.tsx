@@ -15,7 +15,7 @@ export default function CartPage() {
   if (totalCount === 0) {
     return (
       <div className="container py-24 flex flex-col items-center justify-center space-y-6">
-        <div className="h-24 w-24 rounded-full bg-muted flex items-center justify-center$">
+        <div className="h-24 w-24 rounded-full bg-muted flex items-center justify-center">
           <ShoppingBag className="h-12 w-12 text-muted-foreground/30" aria-hidden="true" />
         </div>
         <div className="text-center space-y-2">

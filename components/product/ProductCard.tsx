@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { Play, Pause, ShoppingCart, Download, Eye } from "lucide-react"
+import { Play, Pause, ShoppingCart, Download, Eye, Check } from "lucide-react"
 import { Product } from "@/data/products"
 import { formatPrice } from "@/lib/utils"
 import { cn } from "@/lib/utils"
@@ -48,10 +48,10 @@ export function ProductCard({ product }: ProductCardProps) {
         </div>
 
         <div className="absolute inset-x-3 bottom-3 flex justify-end opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-          <button
+<button
             onClick={() => playTrack(product)}
             aria-label={isCurrentTrack && isPlaying ? `Mettre en pause ${product.name}` : `Écouter ${product.name}`}
-            className="flex h-11 w-11 items-center justify-center rounded-full bg-background text-foreground hover:bg-background/90$"
+            className="flex h-11 w-11 items-center justify-center rounded-full bg-foreground text-background hover:opacity-90 transition-opacity"
           >
             {isCurrentTrack && isPlaying ? (
               <Pause className="h-5 w-5 fill-current" aria-hidden="true" />
@@ -96,14 +96,22 @@ export function ProductCard({ product }: ProductCardProps) {
               </Button>
             ) : (
               <Button
-                variant={isInCart ? "default" : "outline"}
+                variant={isInCart ? "secondary" : "outline"}
                 size="icon"
-                className="h-9 w-9 rounded-lg"
+                className={cn(
+                  "h-9 w-9 rounded-lg",
+                  isInCart &&
+                    "border-foreground bg-foreground text-background hover:bg-foreground/90 disabled:opacity-100"
+                )}
                 onClick={() => addItem(product, getDefaultLicense(product))}
                 disabled={isInCart}
                 aria-label={isInCart ? `${product.name} déjà dans le panier` : `Ajouter ${product.name} au panier`}
               >
-                <ShoppingCart className="h-4 w-4" aria-hidden="true" />
+                {isInCart ? (
+                  <Check className="h-4 w-4" aria-hidden="true" />
+                ) : (
+                  <ShoppingCart className="h-4 w-4" aria-hidden="true" />
+                )}
               </Button>
             )}
           </div>

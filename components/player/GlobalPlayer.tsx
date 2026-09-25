@@ -117,7 +117,7 @@ export function GlobalPlayer() {
             <button
               onClick={togglePlay}
               aria-label={isPlaying ? "Mettre en pause" : "Lecture"}
-              className="flex h-11 w-11 items-center justify-center rounded-full bg-primary text-primary-foreground$ hover:bg-primary/90 transition-colors"
+              className="flex h-11 w-11 items-center justify-center rounded-full bg-foreground text-background hover:opacity-90 transition-opacity"
             >
               {isPlaying ? (
                 <Pause className="h-5 w-5 fill-current" aria-hidden="true" />
